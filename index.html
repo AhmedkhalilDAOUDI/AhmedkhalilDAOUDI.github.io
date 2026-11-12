@@ -85,6 +85,11 @@
     .contact-links { display:flex; gap:30px; flex-wrap:wrap; }
     .contact .text-link:first-child { color:var(--accent); }
     footer { display:flex; justify-content:space-between; gap:20px; padding:25px 0 42px; border-top:1px solid var(--line); color:#8f8881; font-size:11px; }
+    @media (min-width:901px) and (max-height:950px) {
+      .hero { min-height:820px; }
+      .hero-name { font-size:clamp(100px,16vw,230px); }
+      .portrait { height:560px; }
+    }
     @media (max-width:900px) {
       .shell { width:min(100% - 36px,700px); }
       .hero { min-height:830px; }
