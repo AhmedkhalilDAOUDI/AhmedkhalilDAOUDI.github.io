@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101a29">
+  <meta name="description" content="Daoudi Ahmed Khalil — AI and data engineering student building practical tools with machine learning, data pipelines, and knowledge graphs.">
+  <link rel="canonical" href="https://daoudiahmedkhalil.com/">
+  <title>Daoudi Ahmed Khalil — AI & Data Engineering</title>
+  <style>
+    :root { color-scheme: dark; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: #101a29; color: #ecf3f6; line-height: 1.65; }
+    a { color: inherit; text-decoration: none; }
+    a:focus-visible { outline: 2px solid #8be2d0; outline-offset: 5px; border-radius: 3px; }
+    .shell { width: min(1120px, calc(100% - 48px)); margin-inline: auto; }
+    .site-header { display: flex; align-items: center; justify-content: space-between; padding-block: 30px; }
+    .brand { font-size: 15px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+    .brand span { color: #8be2d0; }
+    nav { display: flex; gap: 28px; color: #b8c8d2; font-size: 14px; }
+    nav a:hover, .text-link:hover { color: #8be2d0; }
+    .hero { min-height: 610px; display: grid; grid-template-columns: 1.35fr .65fr; gap: 70px; align-items: center; padding-block: 80px 115px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 11px; color: #8be2d0; font-size: 12px; font-weight: 800; letter-spacing: .17em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 24px; height: 1px; background: currentColor; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { max-width: 800px; margin: 24px 0; font-size: clamp(48px, 7vw, 86px); line-height: 1.04; letter-spacing: -.055em; }
+    h1 span { color: #8be2d0; }
+    .lead { max-width: 630px; color: #b8c8d2; font-size: clamp(18px, 2vw, 21px); }
+    .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 26px; margin-top: 36px; }
+    .button { display: inline-block; padding: 14px 21px; background: #8be2d0; color: #10232b; border-radius: 7px; font-weight: 800; font-size: 14px; transition: transform .2s, background .2s; }
+    .button:hover { transform: translateY(-2px); background: #b1f3e4; }
+    .text-link { font-weight: 700; font-size: 14px; color: #d9e7ea; }
+    .portrait { width: min(100%, 330px); aspect-ratio: 1; justify-self: end; border-radius: 28px; position: relative; display: grid; place-items: center; overflow: hidden; background: radial-gradient(circle at 78% 20%, #417b82, transparent 41%), linear-gradient(145deg, #1d3a4e, #183145 65%, #102838); border: 1px solid #42626c; box-shadow: 24px 24px 0 #182a3b; }
+    .portrait::before, .portrait::after { content: ""; position: absolute; border: 1px solid #79cfc066; border-radius: 50%; }
+    .portrait::before { width: 120%; aspect-ratio: 1; left: 23%; top: 19%; }
+    .portrait::after { width: 76%; aspect-ratio: 1; left: 43%; top: 41%; }
+    .monogram { position: relative; z-index: 1; font-size: clamp(90px, 13vw, 158px); font-weight: 800; letter-spacing: -.12em; line-height: 1; color: #e9fbf7; transform: translateX(-.06em); }
+    section { scroll-margin-top: 30px; }
+    .section { padding-block: 84px; border-top: 1px solid #2b4050; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-bottom: 34px; }
+    h2 { margin: 15px 0 0; font-size: clamp(31px, 4vw, 44px); line-height: 1.18; letter-spacing: -.035em; }
+    .about-copy { max-width: 780px; color: #b8c8d2; font-size: 18px; }
+    .about-copy strong { color: #ecf3f6; }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .card { min-height: 290px; padding: 29px; border: 1px solid #304858; border-radius: 14px; background: #172738; display: flex; flex-direction: column; transition: border-color .2s, transform .2s; }
+    .card:hover { border-color: #8be2d0; transform: translateY(-4px); }
+    .card-number { color: #8be2d0; font-size: 12px; font-weight: 800; letter-spacing: .15em; }
+    h3 { margin: 37px 0 9px; font-size: 22px; letter-spacing: -.02em; }
+    .card p { color: #b8c8d2; font-size: 15px; }
+    .card .arrow { margin-top: auto; color: #8be2d0; font-size: 20px; }
+    .contact { padding-block: 100px; }
+    .contact h2 { max-width: 650px; }
+    .contact p { max-width: 600px; margin: 20px 0 30px; color: #b8c8d2; font-size: 18px; }
+    footer { display: flex; justify-content: space-between; gap: 20px; padding: 24px 0 40px; border-top: 1px solid #2b4050; color: #96aab6; font-size: 13px; }
+    @media (max-width: 760px) {
+      .shell { width: min(100% - 36px, 560px); }
+      .site-header { padding-block: 22px; }
+      nav { gap: 16px; }
+      .hero { min-height: 0; grid-template-columns: 1fr; gap: 52px; padding-block: 70px 85px; }
+      .portrait { justify-self: start; width: 220px; box-shadow: 16px 16px 0 #182a3b; }
+      .monogram { font-size: 105px; }
+      .section { padding-block: 66px; }
+      .cards { grid-template-columns: 1fr; }
+      .card { min-height: 240px; }
+      .contact { padding-block: 75px; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .button, .card { transition: none; } }
+  </style>
+</head>
+<body>
+  <header class="site-header shell">
+    <a class="brand" href="#top" aria-label="Daoudi Ahmed Khalil, home">DAK<span>.</span></a>
+    <nav aria-label="Main navigation"><a href="#about">About</a><a href="#work">Work</a><a href="#contact">Contact</a></nav>
+  </header>
+  <main id="top" class="shell">
+    <section class="hero" aria-labelledby="hero-title">
+      <div>
+        <div class="eyebrow">AI &amp; data engineering</div>
+        <h1 id="hero-title">Hi, I’m <span>Ahmed Khalil.</span></h1>
+        <p class="lead">I build practical AI and data systems, from reliable pipelines to applications that make knowledge easier to use.</p>
+        <div class="actions"><a class="button" href="#work">Explore my work <span aria-hidden="true">↗</span></a><a class="text-link" href="https://github.com/AhmedkhalilDAOUDI">View GitHub <span aria-hidden="true">↗</span></a></div>
+      </div>
+      <div class="portrait" aria-hidden="true"><span class="monogram">AK</span></div>
+    </section>
+    <section id="about" class="section" aria-labelledby="about-title">
+      <div class="eyebrow">01 / About</div>
+      <h2 id="about-title">Curiosity, put to work.</h2>
+      <p class="about-copy">I’m <strong>Daoudi Ahmed Khalil</strong>, focused on AI and data engineering. I enjoy turning complex data into clear, useful tools and learning by building projects that solve real problems.</p>
+    </section>
+    <section id="work" class="section" aria-labelledby="work-title">
+      <div class="section-head"><div><div class="eyebrow">02 / Selected work</div><h2 id="work-title">Projects in practice.</h2></div><a class="text-link" href="https://github.com/AhmedkhalilDAOUDI?tab=repositories">All repositories ↗</a></div>
+      <div class="cards">
+        <a class="card" href="https://github.com/AhmedkhalilDAOUDI/CRAG" aria-label="View CRAG on GitHub"><span class="card-number">PROJECT 01</span><h3>CRAG</h3><p>Exploring knowledge graphs and retrieval to help people work with complex information.</p><span class="arrow" aria-hidden="true">↗</span></a>
+        <a class="card" href="https://github.com/AhmedkhalilDAOUDI/Fraud-detection" aria-label="View Fraud Detection on GitHub"><span class="card-number">PROJECT 02</span><h3>Fraud Detection</h3><p>A machine learning project focused on finding useful signals in transaction data.</p><span class="arrow" aria-hidden="true">↗</span></a>
+        <a class="card" href="https://github.com/AhmedkhalilDAOUDI/Spotify-Pipeline" aria-label="View Spotify Pipeline on GitHub"><span class="card-number">PROJECT 03</span><h3>Spotify Pipeline</h3><p>Extracting, transforming, and loading Spotify listening data into PostgreSQL for analysis.</p><span class="arrow" aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+    <section id="contact" class="contact" aria-labelledby="contact-title">
+      <div class="eyebrow">03 / Contact</div>
+      <h2 id="contact-title">Have an idea worth building?</h2>
+      <p>I’m interested in thoughtful projects across AI, data, and software. You can find me and my work on GitHub.</p>
+      <a class="button" href="https://github.com/AhmedkhalilDAOUDI">Connect on GitHub <span aria-hidden="true">↗</span></a>
+    </section>
+  </main>
+  <footer class="shell"><span>© 2026 Daoudi Ahmed Khalil</span><span>Built with care and curiosity.</span></footer>
+</body>
+</html>
