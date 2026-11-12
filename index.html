@@ -3,168 +3,192 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#15120f">
-  <meta name="description" content="Daoudi Ahmed Khalil builds practical AI and data systems, from knowledge retrieval to machine learning and data pipelines.">
+  <meta name="theme-color" content="#080808">
+  <meta name="description" content="Ahmed Khalil Daoudi — AI Engineer, Data Engineer and Data Scientist with a foundation in applied mathematics, finance and QHSE. Explore selected projects and experience.">
   <link rel="canonical" href="https://daoudiahmedkhalil.com/">
-  <title>Daoudi Ahmed Khalil — AI &amp; Data Engineering</title>
+  <meta property="og:title" content="Ahmed Khalil Daoudi — AI, Data & Quantitative Thinking">
+  <meta property="og:description" content="From applied mathematics and finance to QHSE, data engineering, data science and AI engineering.">
+  <meta property="og:image" content="https://daoudiahmedkhalil.com/assets/khalil-portrait.webp">
+  <title>Ahmed Khalil Daoudi — AI, Data & Quantitative Thinking</title>
   <style>
-    :root { color-scheme: dark; font-family: Arial, Helvetica, sans-serif; color: #f3eadf; background: #15120f; }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { margin: 0; line-height: 1.6; }
-    a { color: inherit; text-decoration: none; }
-    a:focus-visible { outline: 2px solid #d69766; outline-offset: 5px; }
-    .wrap { width: min(1200px, calc(100% - 72px)); margin-inline: auto; }
-    .site-header { display: flex; align-items: center; justify-content: space-between; padding-block: 28px; border-bottom: 1px solid #514238; }
-    .mark { display: inline-grid; place-items: center; width: 42px; height: 42px; border: 1px solid #d2ad86; border-radius: 50%; font-family: Georgia, "Times New Roman", serif; font-size: 22px; font-style: italic; }
-    .header-name { margin-left: 13px; font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
-    .brand { display: flex; align-items: center; }
-    nav { display: flex; gap: 36px; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
-    nav a:hover, .project:hover h3, .inline-link:hover { color: #d69766; }
-    section { scroll-margin-top: 24px; }
-    .hero { display: grid; grid-template-columns: 1.15fr .85fr; min-height: 650px; gap: 72px; align-items: center; padding-block: 90px 108px; }
-    .kicker { font-size: 11px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; }
-    .kicker span { display: inline-block; width: 34px; height: 1px; margin: 0 13px 4px 0; background: #c58657; }
-    h1, h2, h3, p { margin-top: 0; }
-    h1, h2 { font-family: Georgia, "Times New Roman", serif; font-weight: 400; }
-    h1 { max-width: 680px; margin: 26px 0; font-size: clamp(60px, 7vw, 104px); line-height: .99; letter-spacing: -.055em; }
-    h1 em, h2 em { color: #d69766; font-weight: 400; }
-    .intro { max-width: 480px; color: #c7b9a9; font-size: 18px; line-height: 1.75; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 28px; align-items: center; margin-top: 34px; }
-    .button { display: inline-flex; align-items: center; justify-content: center; gap: 20px; min-height: 50px; padding: 12px 20px; border: 1px solid #c58657; background: #c58657; color: #15120f; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; transition: background .2s, transform .2s; }
-    .button:hover { background: #e2a574; transform: translateY(-2px); }
-    .inline-link { border-bottom: 1px solid currentColor; padding-bottom: 3px; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
-    .art { min-height: 480px; position: relative; overflow: hidden; background: #221a15 url("assets/after-hours.webp") center 62% / cover no-repeat; }
-    .art::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, #15120f55, transparent 35%, transparent 65%, #15120f88); }
-    .art-caption, .art-corner { position: absolute; z-index: 1; color: #f3eadf; font-size: 10px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; text-shadow: 0 1px 8px #000; }
-    .art-caption { left: 24px; bottom: 19px; }
-    .art-corner { top: 18px; right: 22px; }
-    .split { display: grid; grid-template-columns: .4fr .6fr; gap: 70px; padding-block: 92px; border-top: 1px solid #514238; }
-    h2 { margin: 0; font-size: clamp(42px, 5vw, 66px); line-height: 1.1; letter-spacing: -.045em; }
-    .section-copy { max-width: 650px; margin: 25px 0 0; color: #c2b4a5; font-size: 19px; line-height: 1.8; }
-    .section-copy strong { color: #f3eadf; font-weight: 600; }
-    .background { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; margin-top: 36px; padding-top: 25px; border-top: 1px solid #514238; }
-    .background span, .background small { display: block; color: #a99785; font-size: 12px; }
-    .background span { margin-bottom: 9px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
-    .background strong { display: block; font-family: Georgia, "Times New Roman", serif; font-size: 21px; font-weight: 400; line-height: 1.3; }
-    .background small { margin-top: 5px; }
-    .capabilities { padding-block: 88px; border-top: 1px solid #514238; }
-    .capabilities h2 { max-width: 700px; margin: 18px 0 40px; }
-    .capability-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-    .capability { padding-top: 20px; border-top: 1px solid #514238; }
-    .capability h3 { margin: 0 0 12px; font-family: Georgia, "Times New Roman", serif; font-size: 25px; font-weight: 400; }
-    .capability p { max-width: 350px; margin: 0; color: #b7a797; font-size: 15px; }
-    .work { padding-block: 93px 110px; border-top: 1px solid #514238; }
-    .work-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 48px; }
-    .work-head h2 { margin-top: 18px; }
-    .projects { border-top: 1px solid #514238; }
-    .project { display: grid; grid-template-columns: .35fr .65fr; gap: 50px; padding: 42px 0 48px; border-bottom: 1px solid #514238; }
-    .project-number { color: #a99785; font-size: 11px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
-    .project h3 { margin: 0 0 12px; font-family: Georgia, "Times New Roman", serif; font-size: clamp(32px, 3.5vw, 47px); font-weight: 400; letter-spacing: -.04em; }
-    .project p { max-width: 690px; margin: 0 0 16px; color: #c2b4a5; font-size: 17px; }
-    .project ul { max-width: 690px; margin: 0 0 20px; padding-left: 20px; color: #b7a797; font-size: 15px; }
-    .project li + li { margin-top: 6px; }
-    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 25px; }
-    .tags span { border: 1px solid #685446; padding: 5px 9px; color: #b7a797; font-size: 11px; letter-spacing: .04em; }
-    .contact { padding-block: 100px 115px; border-top: 1px solid #514238; }
-    .contact h2 { max-width: 800px; margin: 20px 0 28px; }
-    .contact p { max-width: 560px; color: #c7b9a9; font-size: 18px; }
-    footer { display: flex; justify-content: space-between; gap: 20px; padding: 24px 0 42px; border-top: 1px solid #514238; color: #a99785; font-size: 12px; }
-    @media (max-width: 850px) {
-      .wrap { width: min(100% - 36px, 640px); }
-      nav { gap: 18px; }
-      .hero { grid-template-columns: 1fr; gap: 50px; min-height: 0; padding-block: 70px 82px; }
-      .art { min-height: 380px; }
-      .split { grid-template-columns: 1fr; gap: 26px; padding-block: 72px; }
-      .capabilities, .work { padding-block: 75px 90px; }
-      .capability-grid { grid-template-columns: 1fr; gap: 26px; }
-      .project { grid-template-columns: 1fr; gap: 12px; padding: 35px 0 42px; }
+    :root { color-scheme: dark; --bg:#080808; --panel:#121110; --ink:#f1ece6; --muted:#aaa39c; --line:#34302d; --accent:#ed5035; font-family:Arial,Helvetica,sans-serif; background:var(--bg); color:var(--ink); }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; line-height:1.55; }
+    a { color:inherit; text-decoration:none; }
+    a:focus-visible { outline:2px solid var(--accent); outline-offset:5px; }
+    .shell { width:min(1360px,calc(100% - 72px)); margin-inline:auto; }
+    .masthead { display:flex; justify-content:space-between; align-items:center; min-height:82px; border-bottom:1px solid var(--line); position:relative; z-index:5; }
+    .brand { display:flex; align-items:center; gap:12px; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.16em; }
+    .brand-mark { display:grid; place-items:center; width:34px; height:34px; border:1px solid #716a62; border-radius:50%; font-family:Georgia,serif; font-size:13px; font-style:italic; letter-spacing:0; }
+    nav { display:flex; gap:34px; font-size:10px; font-weight:700; letter-spacing:.17em; text-transform:uppercase; }
+    nav a:hover, .text-link:hover { color:var(--accent); }
+    section { scroll-margin-top:25px; }
+    .hero { min-height:760px; position:relative; overflow:hidden; border-bottom:1px solid var(--line); }
+    .hero::before { content:""; position:absolute; inset:0; background:radial-gradient(ellipse at 68% 70%,#2d1815 0,transparent 50%); }
+    .hero-top { display:flex; justify-content:space-between; align-items:start; gap:30px; position:relative; z-index:3; padding-top:44px; }
+    .role-stack { font-family:Impact,"Arial Narrow",sans-serif; font-size:clamp(20px,2.3vw,32px); line-height:.98; text-transform:uppercase; letter-spacing:-.015em; }
+    .role-stack span { display:block; }
+    .hero-note { max-width:280px; color:#c1b9b2; font-size:13px; text-align:right; }
+    .hero-name { position:absolute; z-index:1; top:22%; left:0; right:0; margin:0; color:var(--accent); font-family:Impact,"Arial Narrow",sans-serif; font-size:clamp(100px,20vw,300px); font-weight:900; line-height:.72; letter-spacing:-.055em; text-align:center; text-transform:uppercase; }
+    .hero-name span { display:block; white-space:nowrap; }
+    .hero-name span + span { margin-top:.09em; }
+    .portrait { position:absolute; z-index:2; height:86%; width:auto; max-width:none; right:16%; bottom:-3%; object-fit:contain; filter:contrast(1.08); -webkit-mask-image:radial-gradient(ellipse 62% 54% at 50% 53%,#000 43%,transparent 96%); mask-image:radial-gradient(ellipse 62% 54% at 50% 53%,#000 43%,transparent 96%); }
+    .hero-bottom { position:absolute; z-index:3; left:0; right:0; bottom:39px; display:flex; justify-content:space-between; align-items:end; gap:20px; }
+    .eyebrow { color:var(--accent); font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.2em; }
+    .hero-bottom p { max-width:350px; margin:11px 0 22px; color:var(--ink); font-size:16px; }
+    .text-link { display:inline-block; padding-bottom:5px; border-bottom:1px solid currentColor; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.14em; }
+    .scroll-cue { color:var(--muted); font-size:10px; letter-spacing:.2em; text-transform:uppercase; }
+    .scroll-cue::before { content:""; display:inline-block; width:35px; height:1px; margin:0 10px 4px 0; background:var(--accent); }
+    .role-bar { display:flex; justify-content:space-between; gap:15px; padding:18px 0; border-bottom:1px solid var(--line); color:#c7beb5; font-size:10px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; }
+    .section { padding:105px 0; border-bottom:1px solid var(--line); }
+    .section-head { display:grid; grid-template-columns:.28fr .72fr; gap:35px; margin-bottom:45px; }
+    .section h2, .contact h2 { margin:0; font-family:Impact,"Arial Narrow",sans-serif; font-weight:900; font-size:clamp(52px,7vw,100px); line-height:.92; letter-spacing:-.035em; text-transform:uppercase; }
+    .section h2 em, .contact h2 em { color:var(--accent); font-style:normal; }
+    .section-lead { max-width:770px; color:#d0c8c0; font-size:clamp(19px,2.2vw,28px); line-height:1.48; }
+    .section-lead strong { color:var(--ink); }
+    .story-grid { display:grid; grid-template-columns:1fr 1fr; gap:70px; margin-left:28%; }
+    .story-grid p { margin:0; color:var(--muted); font-size:16px; }
+    .skills { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+    .skill { min-height:220px; padding:25px 28px; background:var(--panel); border:1px solid var(--line); }
+    .skill:nth-child(1) { grid-column:span 2; display:grid; grid-template-columns:1fr 1fr; gap:35px; }
+    .skill-number { color:var(--accent); font-size:11px; font-weight:700; letter-spacing:.16em; }
+    .skill h3 { margin:17px 0 13px; font-family:Georgia,"Times New Roman",serif; font-weight:400; font-size:clamp(26px,2.6vw,38px); line-height:1.15; }
+    .skill p { max-width:570px; margin:0; color:var(--muted); font-size:15px; }
+    .skill-tags { margin-top:18px; color:#d0c8c0; font-size:11px; letter-spacing:.05em; }
+    .education { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+    .education article { padding-top:20px; border-top:2px solid var(--accent); }
+    .education small { color:var(--muted); font-size:11px; text-transform:uppercase; letter-spacing:.14em; }
+    .education h3 { margin:13px 0 8px; font-family:Georgia,serif; font-weight:400; font-size:27px; line-height:1.2; }
+    .education p { margin:0; color:var(--muted); font-size:14px; }
+    .work-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+    .project { min-height:300px; padding:26px 28px; border:1px solid var(--line); background:var(--panel); display:flex; flex-direction:column; }
+    .project:first-child { grid-column:span 2; min-height:280px; background:linear-gradient(115deg,#251512,#121110 55%); }
+    .project-top { display:flex; justify-content:space-between; gap:20px; color:var(--accent); font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.16em; }
+    .project h3 { margin:35px 0 10px; font-family:Impact,"Arial Narrow",sans-serif; font-size:clamp(33px,4vw,57px); font-weight:900; line-height:1; text-transform:uppercase; letter-spacing:-.02em; }
+    .project p { max-width:670px; margin:0 0 18px; color:#c6bdb5; font-size:15px; }
+    .project .text-link { align-self:start; margin-top:auto; }
+    .project:hover { border-color:#a04737; }
+    .experience { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    .experience article { border-top:1px solid var(--line); padding-top:20px; }
+    .experience small { color:var(--accent); font-size:11px; font-weight:700; letter-spacing:.15em; }
+    .experience h3 { margin:12px 0; font-family:Georgia,serif; font-size:26px; font-weight:400; }
+    .experience p { max-width:530px; color:var(--muted); font-size:15px; }
+    .after-hours { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
+    .after-hours img { width:100%; max-height:500px; object-fit:cover; }
+    .after-hours h2 { margin:15px 0 22px; }
+    .after-hours p { max-width:530px; color:var(--muted); font-size:16px; }
+    .interests { display:flex; flex-wrap:wrap; gap:9px; margin-top:30px; }
+    .interests span { border:1px solid var(--line); padding:8px 11px; color:#d5cbc1; font-size:11px; text-transform:uppercase; letter-spacing:.09em; }
+    .contact { padding:120px 0 125px; }
+    .contact h2 { max-width:960px; }
+    .contact p { max-width:550px; margin:30px 0; color:var(--muted); font-size:18px; }
+    .contact-links { display:flex; gap:30px; flex-wrap:wrap; }
+    .contact .text-link:first-child { color:var(--accent); }
+    footer { display:flex; justify-content:space-between; gap:20px; padding:25px 0 42px; border-top:1px solid var(--line); color:#8f8881; font-size:11px; }
+    @media (max-width:900px) {
+      .shell { width:min(100% - 36px,700px); }
+      .hero { min-height:680px; }
+      .hero-name { top:28%; font-size:clamp(80px,20vw,155px); }
+      .portrait { height:75%; right:5%; }
+      .section { padding:75px 0; }
+      .section-head { grid-template-columns:1fr; gap:20px; }
+      .story-grid { margin-left:0; gap:35px; }
+      .education { grid-template-columns:1fr; gap:35px; }
+      .after-hours { gap:28px; }
     }
-    @media (max-width: 520px) {
-      .header-name { display: none; }
-      nav { gap: 14px; font-size: 10px; }
-      h1 { font-size: clamp(54px, 14vw, 72px); }
-      .art { min-height: 310px; }
-      .background { grid-template-columns: 1fr; }
-      .work-head { display: block; }
-      .work-head .inline-link { display: inline-block; margin-top: 25px; }
-      footer { flex-direction: column; }
+    @media (max-width:600px) {
+      .masthead { min-height:70px; }
+      .brand { font-size:9px; letter-spacing:.06em; }
+      .brand-mark { width:30px; height:30px; }
+      nav { gap:13px; font-size:9px; letter-spacing:.05em; }
+      nav a:nth-child(1), nav a:nth-child(3) { display:none; }
+      .hero { min-height:650px; }
+      .hero-top { padding-top:28px; }
+      .role-stack { font-size:19px; }
+      .hero-note { max-width:135px; font-size:10px; }
+      .hero-name { top:31%; font-size:clamp(78px,20vw,115px); }
+      .portrait { height:55%; right:-15%; bottom:0; }
+      .hero-bottom { bottom:25px; }
+      .hero-bottom p { max-width:245px; font-size:13px; }
+      .scroll-cue { display:none; }
+      .role-bar { flex-wrap:wrap; justify-content:start; gap:9px 18px; font-size:9px; }
+      .story-grid, .skills, .work-grid, .experience, .after-hours { grid-template-columns:1fr; }
+      .skill:nth-child(1), .project:first-child { grid-column:auto; display:block; }
+      .skill, .project { min-height:0; }
+      .section h2, .contact h2 { font-size:clamp(47px,13vw,70px); }
+      .contact { padding:90px 0; }
+      footer { flex-direction:column; }
     }
-    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .button { transition: none; } }
+    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
   </style>
 </head>
 <body>
-  <header class="site-header wrap">
-    <a class="brand" href="#top" aria-label="Daoudi Ahmed Khalil, home"><span class="mark">k</span><span class="header-name">Daoudi Ahmed Khalil</span></a>
-    <nav aria-label="Main navigation"><a href="#about">About</a><a href="#work">Work</a><a href="#contact">Contact</a></nav>
+  <header class="masthead shell">
+    <a class="brand" href="#top" aria-label="Ahmed Khalil Daoudi, home"><span class="brand-mark">AK</span><span>Ahmed Khalil Daoudi</span></a>
+    <nav aria-label="Main navigation"><a href="#story">Story</a><a href="#expertise">Expertise</a><a href="#education">Education</a><a href="#work">Work</a><a href="#contact">Contact</a></nav>
   </header>
-  <main id="top" class="wrap">
+  <main id="top" class="shell">
     <section class="hero" aria-labelledby="hero-title">
-      <div>
-        <div class="kicker"><span aria-hidden="true"></span>AI &amp; data engineering</div>
-        <h1 id="hero-title">Built to hold up <em>under pressure.</em></h1>
-        <p class="intro">I’m Ahmed Khalil Daoudi. I build AI and data systems with the habits I learned in quality work: follow the evidence, test the result, and pay attention to the details.</p>
-        <div class="hero-actions"><a class="button" href="#work">Explore my work <span aria-hidden="true">↗</span></a><a class="inline-link" href="https://github.com/AhmedkhalilDAOUDI">GitHub ↗</a></div>
+      <div class="hero-top">
+        <div class="role-stack"><span>AI Engineer</span><span>Data Engineer</span><span>Data Scientist</span></div>
+        <p class="hero-note">Applied mathematics and finance. Industrial quality. Data and AI. One connected path.</p>
       </div>
-      <div class="art" role="img" aria-label="An original dark still life with boxing gloves, a classic car steering wheel, a worn book, and indigo fabric"><span class="art-caption">After hours / the things behind the work</span><span class="art-corner">K / 2026</span></div>
+      <h1 id="hero-title" class="hero-name"><span>Khalil</span><span>Daoudi</span></h1>
+      <img class="portrait" src="assets/khalil-portrait.webp" width="900" height="1211" alt="Ahmed Khalil Daoudi in a dark portrait, turned partly away from the camera">
+      <div class="hero-bottom"><div><span class="eyebrow">Casablanca, Morocco</span><p>Building systems that can be explained, tested, and trusted.</p><a class="text-link" href="#work">Explore the work ↗</a></div><span class="scroll-cue">Scroll to enter</span></div>
     </section>
-    <section id="about" class="split" aria-labelledby="about-title">
-      <div class="kicker">01 / About</div>
-      <div>
-        <h2 id="about-title">My route here wasn’t <em>a straight line.</em></h2>
-        <p class="section-copy">I came to AI and data engineering through industrial quality and QHSE. In that work, a result is only useful when you can understand how it happened and trust the process behind it.</p>
-        <p class="section-copy">That instinct carries into what I build now: <strong>retrieval with visible sources, models evaluated on the right questions, and pipelines that make messy data usable.</strong> I like work that stays interesting when you look closely.</p>
-        <div class="background"><div><span>Education</span><strong>Master in Data Engineering</strong><small>EHTP / MSDE, Morocco</small></div><div><span>Earlier work</span><strong>Quality systems &amp; process improvement</strong><small>Industrial operations and QHSE</small></div></div>
-      </div>
+    <div class="role-bar" aria-label="Areas of practice"><span>Mathematics &amp; Finance</span><span>QHSE</span><span>Data Engineering</span><span>Data Science</span><span>AI Engineering</span></div>
+    <section id="story" class="section" aria-labelledby="story-title">
+      <div class="section-head"><span class="eyebrow">01 / The story</span><h2 id="story-title">More than <em>one lane.</em></h2></div>
+      <p class="section-lead">I’m Ahmed Khalil Daoudi. My path runs from <strong>applied mathematics and finance</strong> through <strong>industrial quality</strong> to <strong>data and AI</strong>. Each discipline taught me a different way to ask whether a system really works.</p>
+      <div class="story-grid"><p>QHSE gave me a practical respect for traceability, risk, and process. Data engineering taught me to make information reliable and available. Data science and AI engineering let me turn that foundation into models, retrieval systems, and useful software.</p><p>I’m interested in the whole chain: the question, the data, the method, the result, and the evidence that connects them. The projects below show that range in practice.</p></div>
     </section>
-    <section class="capabilities" aria-labelledby="capabilities-title">
-      <div class="kicker">Beyond the screen</div>
-      <h2 id="capabilities-title">The references behind <em>this space.</em></h2>
-      <div class="capability-grid">
-        <div class="capability"><h3>Ombré Leather</h3><p>Tom Ford’s dark leather and warm edge set the palette: quiet, tactile, and deliberate.</p></div>
-        <div class="capability"><h3>The gym</h3><p>The appeal of showing up, putting in the reps, and seeing what changes over time.</p></div>
-        <div class="capability"><h3>Mustang</h3><p>Classic muscle car lines, warm metal, and a little more character than strictly necessary.</p></div>
-        <div class="capability"><h3>Boxing</h3><p>Composure, rhythm, and finding the right move when things get uncomfortable.</p></div>
-        <div class="capability"><h3>Dostoevsky</h3><p>People full of contradictions, and questions that refuse easy answers.</p></div>
-        <div class="capability"><h3>Sekiro</h3><p>Precision and patience. Learn the pattern, fail, adjust, and try again.</p></div>
+    <section id="expertise" class="section" aria-labelledby="expertise-title">
+      <div class="section-head"><span class="eyebrow">02 / What I do</span><h2 id="expertise-title">Five disciplines.<br><em>One toolkit.</em></h2></div>
+      <div class="skills">
+        <article class="skill"><div><span class="skill-number">01 / QUANTITATIVE FOUNDATION</span><h3>Applied mathematics &amp; finance</h3></div><div><p>A foundation in applied mathematics for social sciences, with a finance major and actuarial focus. It shapes how I frame questions, reason about uncertainty, and read model results.</p><div class="skill-tags">Statistics · Quantitative reasoning · Risk · Finance</div></div></article>
+        <article class="skill"><span class="skill-number">02 / ENGINEERING</span><h3>Data engineering</h3><p>Build pipelines that ingest, transform, store, and serve data, from API extraction to scheduled and streaming workflows.</p><div class="skill-tags">Python · SQL · PostgreSQL · Spark · Kafka · Airflow · Docker</div></article>
+        <article class="skill"><span class="skill-number">03 / MODELLING</span><h3>Data science</h3><p>Prepare features, compare models, handle class imbalance, and evaluate performance with metrics that fit the problem.</p><div class="skill-tags">pandas · scikit-learn · TensorFlow · Experiment design · Power BI</div></article>
+        <article class="skill"><span class="skill-number">04 / INTELLIGENCE</span><h3>AI engineering</h3><p>Build retrieval and agent workflows that connect models to evidence, with source tracking and clear limitations.</p><div class="skill-tags">LLMs · RAG · GraphRAG · LangGraph · Neo4j · FastAPI</div></article>
+        <article class="skill"><span class="skill-number">05 / OPERATIONS</span><h3>QHSE &amp; process</h3><p>Bring audit discipline, risk awareness, quality systems, and continuous improvement into technical work.</p><div class="skill-tags">QHSE · Audits · ISO systems · Lean methods · Process improvement</div></article>
       </div>
     </section>
-    <section id="work" class="work" aria-labelledby="work-title">
-      <div class="work-head"><div><div class="kicker">02 / Selected work</div><h2 id="work-title">A few things <em>I’ve built.</em></h2></div><a class="inline-link" href="https://github.com/AhmedkhalilDAOUDI?tab=repositories">All repositories ↗</a></div>
-      <div class="projects">
-        <article class="project">
-          <div class="project-number">01 / Knowledge systems</div>
-          <div><h3>CRAG</h3><p>A document question-answering project that combines a knowledge graph with semantic and keyword search.</p>
-            <ul><li>Ingests PDFs and other document formats, including OCR for scanned pages.</li><li>Links answers to retrieved passages and graph facts; citation checks confirm that quoted text appears in the source.</li><li>Compares graph-assisted retrieval with classic RAG modes in a small academic evaluation.</li></ul>
-            <div class="tags"><span>Python</span><span>Neo4j</span><span>LangGraph</span><span>FastAPI</span></div>
-            <a class="inline-link" href="https://github.com/AhmedkhalilDAOUDI/CRAG">Read the code &amp; evaluation ↗</a>
-          </div>
-        </article>
-        <article class="project">
-          <div class="project-number">02 / Applied ML</div>
-          <div><h3>Fraud Detection</h3><p>A credit card fraud classifier built for a highly imbalanced public benchmark dataset.</p>
-            <ul><li>Compared 13 algorithms and used SMOTE only on the training data.</li><li>The project reports 0.8808 PR-AUC for its final Extra Trees model on the held-out set.</li><li>Includes an interactive Streamlit interface for exploring predictions.</li></ul>
-            <div class="tags"><span>Python</span><span>scikit-learn</span><span>SMOTE</span><span>Streamlit</span></div>
-            <a class="inline-link" href="https://github.com/AhmedkhalilDAOUDI/Fraud-detection">Read the project ↗</a>
-          </div>
-        </article>
-        <article class="project">
-          <div class="project-number">03 / Data engineering</div>
-          <div><h3>Spotify Pipeline</h3><p>An end-to-end pipeline for exploring personal listening patterns.</p>
-            <ul><li>Extracts recently played and top tracks from the Spotify API.</li><li>Stores raw data as Parquet, transforms it with Pandas, and loads it into PostgreSQL.</li><li>Includes scheduled runs and a notebook for listening-pattern analysis.</li></ul>
-            <div class="tags"><span>Python</span><span>Pandas</span><span>Parquet</span><span>PostgreSQL</span></div>
-            <a class="inline-link" href="https://github.com/AhmedkhalilDAOUDI/Spotify-Pipeline">Read the pipeline ↗</a>
-          </div>
-        </article>
+    <section id="education" class="section" aria-labelledby="education-title">
+      <div class="section-head"><span class="eyebrow">03 / Education</span><h2 id="education-title">The foundations<br><em>behind the work.</em></h2></div>
+      <div class="education">
+        <article><small>Graduate / Data</small><h3>Master in Data Engineering</h3><p>EHTP / MSDE, Morocco</p></article>
+        <article><small>Graduate / Operations</small><h3>Master in Quality, Health, Safety &amp; Environment</h3><p>INSA / UPHF</p></article>
+        <article><small>Undergraduate / Quantitative</small><h3>Bachelor’s in Applied Mathematics for Social Sciences</h3><p>Major in Finance · Actuarial focus</p></article>
       </div>
+    </section>
+    <section id="work" class="section" aria-labelledby="work-title">
+      <div class="section-head"><span class="eyebrow">04 / Selected work</span><h2 id="work-title">Ideas made<br><em>testable.</em></h2></div>
+      <div class="work-grid">
+        <article class="project"><div class="project-top"><span>01 / AI SYSTEMS</span><span>LOCAL MVP</span></div><h3>My AI Team</h3><p>A multi-model debate workspace with evidence ingestion, structured arguments, independent juries, saved runs, cost previews, and evaluation. Built for controlled local experiments; its README documents the limits before production use.</p><a class="text-link" href="https://github.com/AhmedkhalilDAOUDI/The.Council">Explore the project ↗</a></article>
+        <article class="project"><div class="project-top"><span>02 / RETRIEVAL</span><span>GRAPH + SEARCH</span></div><h3>CRAG</h3><p>Document question answering that combines graph, semantic, and keyword retrieval. Answers link back to passages; a small academic evaluation compares retrieval modes.</p><a class="text-link" href="https://github.com/AhmedkhalilDAOUDI/CRAG">Code &amp; evaluation ↗</a></article>
+        <article class="project"><div class="project-top"><span>03 / MACHINE LEARNING</span><span>CLASS IMBALANCE</span></div><h3>Fraud detection</h3><p>Compared 13 classifiers on a public credit card fraud dataset, applied SMOTE only to training data, and reported 0.8808 PR-AUC for the final Extra Trees model.</p><a class="text-link" href="https://github.com/AhmedkhalilDAOUDI/Fraud-detection">Explore the project ↗</a></article>
+        <article class="project"><div class="project-top"><span>04 / DATA PIPELINES</span><span>API TO DATABASE</span></div><h3>Spotify pipeline</h3><p>From Spotify API extraction to Parquet, Pandas transformations, PostgreSQL, scheduled runs, and listening-pattern analysis.</p><a class="text-link" href="https://github.com/AhmedkhalilDAOUDI/Spotify-Pipeline">Explore the pipeline ↗</a></article>
+        <article class="project"><div class="project-top"><span>05 / PREDICTIVE MODELLING</span><span>HONEST EVALUATION</span></div><h3>UFC predictor</h3><p>Trained on 7,169 fights and compared models with and without betting odds. The simpler logistic model performed best, prompting the question: prediction or market imitation?</p><a class="text-link" href="https://github.com/AhmedkhalilDAOUDI/UFC-Predictor">Explore the analysis ↗</a></article>
+      </div>
+      <p style="margin:28px 0 0"><a class="text-link" href="https://github.com/AhmedkhalilDAOUDI?tab=repositories">All public repositories ↗</a></p>
+    </section>
+    <section class="section" aria-labelledby="experience-title">
+      <div class="section-head"><span class="eyebrow">05 / Experience</span><h2 id="experience-title">Built in<br><em>the real world.</em></h2></div>
+      <div class="experience">
+        <article><small>2024–2026 / CANALTEX</small><h3>QHSE department leadership</h3><p>Quality, health, safety, and environmental systems in an industrial setting, including audits, risk, compliance, and continuous improvement.</p></article>
+        <article><small>2023–2024 / TRIA GROUP</small><h3>QHSE &amp; operational processes</h3><p>Contributed to food safety management practices and standardized operational processes, building the process discipline I now bring to data and AI work.</p></article>
+      </div>
+    </section>
+    <section class="section after-hours" aria-labelledby="after-title">
+      <div><span class="eyebrow">06 / After hours</span><h2 id="after-title">The things<br><em>behind the mood.</em></h2><p>The visual language here comes from things I like: the dark texture of Ombré Leather, the discipline of training, the lines of a Mustang, the tension of Dostoevsky, and the precision of Sekiro.</p><div class="interests"><span>Ombré Leather</span><span>Gym</span><span>Mustang</span><span>Boxing</span><span>Dostoevsky</span><span>Sekiro</span></div></div>
+      <img src="assets/after-hours.webp" width="1120" height="1400" loading="lazy" alt="Dark still life of boxing gloves, a classic steering wheel, a worn book, and indigo fabric">
     </section>
     <section id="contact" class="contact" aria-labelledby="contact-title">
-      <div class="kicker">03 / Contact</div>
-      <h2 id="contact-title">Have a hard problem <em>worth working through?</em></h2>
-      <p>I’m interested in AI, data engineering, and software that makes its reasoning easier to inspect. Send me a note or explore the projects behind this site.</p>
-      <div class="hero-actions"><a class="button" href="mailto:daoudiahmedkhalil@gmail.com">Email me <span aria-hidden="true">↗</span></a><a class="inline-link" href="https://github.com/AhmedkhalilDAOUDI">Explore GitHub ↗</a></div>
+      <span class="eyebrow">07 / Contact</span><h2 id="contact-title">Let’s build<br><em>something useful.</em></h2><p>Have a question involving data, models, retrieval, or a messy process? I’d like to hear it.</p>
+      <div class="contact-links"><a class="text-link" href="mailto:daoudiahmedkhalil@gmail.com">daoudiahmedkhalil@gmail.com ↗</a><a class="text-link" href="https://github.com/AhmedkhalilDAOUDI">GitHub ↗</a></div>
     </section>
   </main>
-  <footer class="wrap"><span>© 2026 Daoudi Ahmed Khalil</span><span>Design direction: <a href="https://www.getlayers.ai/layer/artist">Kai Nomura / GetLayers</a></span></footer>
+  <footer class="shell"><span>© 2026 Ahmed Khalil Daoudi · Casablanca, Morocco</span><span>Visual direction inspired by <a href="https://www.getlayers.ai/layer/marcus-vane">Marcus Vane / GetLayers</a></span></footer>
 </body>
 </html>
