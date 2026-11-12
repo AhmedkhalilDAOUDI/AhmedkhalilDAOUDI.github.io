@@ -42,17 +42,31 @@
     .art-corner { position: absolute; z-index: 2; top: 18px; right: 22px; font-size: 12px; }
     .split { display: grid; grid-template-columns: .4fr .6fr; gap: 70px; padding-block: 92px; border-top: 1px solid #d6d9d0; }
     h2 { margin: 0; font-size: clamp(42px, 5vw, 66px); line-height: 1.1; letter-spacing: -.045em; }
-    .section-copy { max-width: 650px; color: #4e574f; font-size: 20px; line-height: 1.8; }
+    .section-copy { max-width: 650px; margin: 25px 0 0; color: #4e574f; font-size: 19px; line-height: 1.8; }
     .section-copy strong { color: #191b18; font-weight: 600; }
+    .background { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; margin-top: 36px; padding-top: 25px; border-top: 1px solid #bfc7bc; }
+    .background span, .background small { display: block; color: #657066; font-size: 12px; }
+    .background span { margin-bottom: 9px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    .background strong { display: block; font-family: Georgia, "Times New Roman", serif; font-size: 21px; font-weight: 400; line-height: 1.3; }
+    .background small { margin-top: 5px; }
+    .capabilities { padding-block: 88px; border-top: 1px solid #d6d9d0; }
+    .capabilities h2 { max-width: 700px; margin: 18px 0 40px; }
+    .capability-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .capability { padding-top: 20px; border-top: 1px solid #bfc7bc; }
+    .capability h3 { margin: 0 0 12px; font-family: Georgia, "Times New Roman", serif; font-size: 25px; font-weight: 400; }
+    .capability p { max-width: 350px; margin: 0; color: #596159; font-size: 15px; }
     .work { padding-block: 93px 110px; border-top: 1px solid #d6d9d0; }
     .work-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 48px; }
     .work-head h2 { margin-top: 18px; }
     .projects { border-top: 1px solid #bfc7bc; }
-    .project { display: grid; grid-template-columns: 48px 1fr 1.3fr 32px; gap: 24px; align-items: center; padding: 34px 0; border-bottom: 1px solid #bfc7bc; }
-    .project-number { color: #657066; font-family: Georgia, "Times New Roman", serif; font-size: 18px; }
-    .project h3 { margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: clamp(27px, 3vw, 37px); font-weight: 400; letter-spacing: -.035em; }
-    .project p { max-width: 450px; margin: 0; color: #5a635a; font-size: 15px; }
-    .project-arrow { justify-self: end; font-size: 24px; }
+    .project { display: grid; grid-template-columns: .35fr .65fr; gap: 50px; padding: 42px 0 48px; border-bottom: 1px solid #bfc7bc; }
+    .project-number { color: #657066; font-size: 11px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+    .project h3 { margin: 0 0 12px; font-family: Georgia, "Times New Roman", serif; font-size: clamp(32px, 3.5vw, 47px); font-weight: 400; letter-spacing: -.04em; }
+    .project p { max-width: 690px; margin: 0 0 16px; color: #485149; font-size: 17px; }
+    .project ul { max-width: 690px; margin: 0 0 20px; padding-left: 20px; color: #596159; font-size: 15px; }
+    .project li + li { margin-top: 6px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 25px; }
+    .tags span { border: 1px solid #c4cbc1; padding: 5px 9px; color: #596159; font-size: 11px; letter-spacing: .04em; }
     .contact { padding-block: 100px 115px; border-top: 1px solid #d6d9d0; }
     .contact h2 { max-width: 800px; margin: 20px 0 28px; }
     .contact p { max-width: 560px; color: #555d55; font-size: 18px; }
@@ -63,10 +77,9 @@
       .hero { grid-template-columns: 1fr; gap: 50px; min-height: 0; padding-block: 70px 82px; }
       .art { min-height: 380px; }
       .split { grid-template-columns: 1fr; gap: 26px; padding-block: 72px; }
-      .work { padding-block: 75px 90px; }
-      .project { grid-template-columns: 30px 1fr 30px; gap: 15px; padding: 27px 0; }
-      .project p { grid-column: 2; grid-row: 2; }
-      .project-arrow { grid-column: 3; grid-row: 1; }
+      .capabilities, .work { padding-block: 75px 90px; }
+      .capability-grid { grid-template-columns: 1fr; gap: 26px; }
+      .project { grid-template-columns: 1fr; gap: 12px; padding: 35px 0 42px; }
     }
     @media (max-width: 520px) {
       .header-name { display: none; }
@@ -74,6 +87,7 @@
       h1 { font-size: clamp(54px, 14vw, 72px); }
       .art { min-height: 310px; }
       .art-word { font-size: 130px; }
+      .background { grid-template-columns: 1fr; }
       .work-head { display: block; }
       .work-head .inline-link { display: inline-block; margin-top: 25px; }
       footer { flex-direction: column; }
@@ -98,21 +112,56 @@
     </section>
     <section id="about" class="split" aria-labelledby="about-title">
       <div class="kicker">01 / About</div>
-      <div><h2 id="about-title">Building at the intersection of <em>data and ideas.</em></h2><p class="section-copy">I’m <strong>Daoudi Ahmed Khalil</strong>, focused on AI and data engineering. I enjoy turning complex data into clear, useful tools and learning by building projects that solve real problems.</p></div>
+      <div>
+        <h2 id="about-title">Building at the intersection of <em>data and ideas.</em></h2>
+        <p class="section-copy">I’m <strong>Daoudi Ahmed Khalil</strong>, an AI and data engineering practitioner. My work combines retrieval systems, machine learning and data pipelines to turn complex information into usable tools.</p>
+        <p class="section-copy">I came to data engineering from quality and industrial operations. That background shapes how I build: make the process understandable, test the result, and show where the evidence comes from.</p>
+        <div class="background"><div><span>Education</span><strong>Master in Data Engineering</strong><small>EHTP / MSDE, Morocco</small></div><div><span>Earlier work</span><strong>Quality systems &amp; process improvement</strong><small>Industrial operations and QHSE</small></div></div>
+      </div>
+    </section>
+    <section class="capabilities" aria-labelledby="capabilities-title">
+      <div class="kicker">What I work with</div>
+      <h2 id="capabilities-title">From raw data to <em>clear answers.</em></h2>
+      <div class="capability-grid">
+        <div class="capability"><h3>Knowledge systems</h3><p>Document ingestion, semantic and keyword retrieval, knowledge graphs, and source-linked answers.</p></div>
+        <div class="capability"><h3>Applied machine learning</h3><p>Feature preparation, class imbalance, model comparison, and evaluation with metrics suited to the problem.</p></div>
+        <div class="capability"><h3>Data pipelines</h3><p>API extraction, transformation, Parquet storage, PostgreSQL loading, and scheduled workflows.</p></div>
+      </div>
     </section>
     <section id="work" class="work" aria-labelledby="work-title">
       <div class="work-head"><div><div class="kicker">02 / Selected work</div><h2 id="work-title">A few things <em>I’ve built.</em></h2></div><a class="inline-link" href="https://github.com/AhmedkhalilDAOUDI?tab=repositories">All repositories ↗</a></div>
       <div class="projects">
-        <a class="project" href="https://github.com/AhmedkhalilDAOUDI/CRAG" aria-label="View CRAG on GitHub"><span class="project-number">01</span><h3>CRAG</h3><p>Exploring knowledge graphs and retrieval to help people work with complex information.</p><span class="project-arrow" aria-hidden="true">↗</span></a>
-        <a class="project" href="https://github.com/AhmedkhalilDAOUDI/Fraud-detection" aria-label="View Fraud Detection on GitHub"><span class="project-number">02</span><h3>Fraud Detection</h3><p>A machine learning project focused on finding useful signals in transaction data.</p><span class="project-arrow" aria-hidden="true">↗</span></a>
-        <a class="project" href="https://github.com/AhmedkhalilDAOUDI/Spotify-Pipeline" aria-label="View Spotify Pipeline on GitHub"><span class="project-number">03</span><h3>Spotify Pipeline</h3><p>Extracting, transforming, and loading Spotify listening data into PostgreSQL for analysis.</p><span class="project-arrow" aria-hidden="true">↗</span></a>
+        <article class="project">
+          <div class="project-number">01 / Knowledge systems</div>
+          <div><h3>CRAG</h3><p>A document question-answering project that combines a knowledge graph with semantic and keyword search.</p>
+            <ul><li>Ingests PDFs and other document formats, including OCR for scanned pages.</li><li>Links answers to retrieved passages and graph facts; citation checks confirm that quoted text appears in the source.</li><li>Compares graph-assisted retrieval with classic RAG modes in a small academic evaluation.</li></ul>
+            <div class="tags"><span>Python</span><span>Neo4j</span><span>LangGraph</span><span>FastAPI</span></div>
+            <a class="inline-link" href="https://github.com/AhmedkhalilDAOUDI/CRAG">Read the code &amp; evaluation ↗</a>
+          </div>
+        </article>
+        <article class="project">
+          <div class="project-number">02 / Applied ML</div>
+          <div><h3>Fraud Detection</h3><p>A credit card fraud classifier built for a highly imbalanced public benchmark dataset.</p>
+            <ul><li>Compared 13 algorithms and used SMOTE only on the training data.</li><li>The project reports 0.8808 PR-AUC for its final Extra Trees model on the held-out set.</li><li>Includes an interactive Streamlit interface for exploring predictions.</li></ul>
+            <div class="tags"><span>Python</span><span>scikit-learn</span><span>SMOTE</span><span>Streamlit</span></div>
+            <a class="inline-link" href="https://github.com/AhmedkhalilDAOUDI/Fraud-detection">Read the project ↗</a>
+          </div>
+        </article>
+        <article class="project">
+          <div class="project-number">03 / Data engineering</div>
+          <div><h3>Spotify Pipeline</h3><p>An end-to-end pipeline for exploring personal listening patterns.</p>
+            <ul><li>Extracts recently played and top tracks from the Spotify API.</li><li>Stores raw data as Parquet, transforms it with Pandas, and loads it into PostgreSQL.</li><li>Includes scheduled runs and a notebook for listening-pattern analysis.</li></ul>
+            <div class="tags"><span>Python</span><span>Pandas</span><span>Parquet</span><span>PostgreSQL</span></div>
+            <a class="inline-link" href="https://github.com/AhmedkhalilDAOUDI/Spotify-Pipeline">Read the pipeline ↗</a>
+          </div>
+        </article>
       </div>
     </section>
     <section id="contact" class="contact" aria-labelledby="contact-title">
       <div class="kicker">03 / Contact</div>
       <h2 id="contact-title">Let’s make something <em>matter.</em></h2>
-      <p>I’m interested in thoughtful projects across AI, data, and software. You can find me and my work on GitHub.</p>
-      <a class="button" href="https://github.com/AhmedkhalilDAOUDI">Connect on GitHub <span aria-hidden="true">↗</span></a>
+      <p>I’m open to conversations about AI, data engineering, and useful software. Send me a note or explore the projects behind this site.</p>
+      <div class="hero-actions"><a class="button" href="mailto:daoudiahmedkhalil@gmail.com">Email me <span aria-hidden="true">↗</span></a><a class="inline-link" href="https://github.com/AhmedkhalilDAOUDI">Explore GitHub ↗</a></div>
     </section>
   </main>
   <footer class="wrap"><span>© 2026 Daoudi Ahmed Khalil</span><span>Design direction: <a href="https://www.getlayers.ai/layer/artist">Kai Nomura / GetLayers</a></span></footer>
