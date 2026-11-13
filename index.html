@@ -76,8 +76,6 @@
 .book-cover-label span{font-size:3.9cqw;letter-spacing:.06em}
 .gallery figcaption{padding-top:12px;font-size:13px;line-height:1.35}
 .gallery figcaption span{display:block;margin-top:3px;color:var(--muted);font-size:12px}
-.simple-list{display:flex;flex-wrap:wrap;gap:12px 26px;padding:0;margin:24px 0 0;list-style:none;font-family:Georgia,serif;font-size:20px}
-.simple-list li{border-top:1px solid var(--line);padding-top:14px;min-width:160px}
 .contact{padding:110px 0}.contact-links{display:flex;gap:30px;flex-wrap:wrap;margin-top:35px}
 footer{display:flex;justify-content:space-between;gap:20px;padding:25px 0 42px;border-top:1px solid var(--line);color:#8f8881;font-size:11px}
 @media(max-width:900px){.games .gallery{grid-template-columns:repeat(2,minmax(0,1fr))}.section{padding:75px 0}.intro,.facts{gap:35px}.gallery{grid-template-columns:repeat(3,minmax(0,1fr))}}
@@ -163,8 +161,7 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:25px 0 42px;b
       <article class="fact"><h4>Personal Training Coach</h4><p>2023</p></article>
     </div></div></section>
     <section id="personal" class="section" aria-labelledby="personal-title"><div class="section-head"><span class="eyebrow">03 / Personal</span><h2 id="personal-title">Personal.</h2></div><div id="collections"></div>
-      <section id="sports" class="collection" aria-labelledby="sports-title">
-        <div class="collection-head"><h3 id="sports-title">Sports</h3></div>
+      <section id="sports" class="collection" aria-label="Sports">
         <div class="interest-stage">
           <blockquote class="interest-quote">
             <p>“It is a shame for a man to grow old without seeing the beauty and strength of which his body is capable.”</p>
@@ -172,12 +169,11 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:25px 0 42px;b
           </blockquote>
           <img class="interest-portrait" src="assets/portraits/sports-profile.webp" width="480" height="600" alt="Ahmed in a side profile mirror portrait" loading="lazy">
         </div>
-        <ul class="simple-list"><li>Strength training</li><li>Boxing</li><li>Basketball</li></ul>
       </section>
     </section>
     <section id="contact" class="contact" aria-labelledby="contact-title"><span class="eyebrow">04 / Contact</span><h2 id="contact-title">Contact.</h2><div class="contact-links"><a class="text-link" href="https://github.com/AhmedkhalilDAOUDI">GitHub ↗</a><a class="text-link" href="https://www.linkedin.com/in/ahmed-khalil-daoudi-94900922b">LinkedIn ↗</a><a class="text-link" href="https://www.instagram.com/ewa_khalil/">Instagram ↗</a></div></section>
   </main>
-  <footer class="shell"><span>© 2026 Ahmed Khalil Daoudi · Casablanca, Morocco</span><span>Visual direction inspired by <a href="https://www.getlayers.ai/layer/marcus-vane">Marcus Vane / GetLayers</a></span></footer>
+  <footer class="shell"><span>© 2026 Ahmed Khalil Daoudi · Casablanca, Morocco</span></footer>
   <script>
     const collections = {
       Cinema: [['I Origins','2014'],['Parasite','2019'],['Heretic','2024'],['Decision to Leave','2022']],
@@ -213,7 +209,8 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:25px 0 42px;b
     for (const [name, entries] of Object.entries(collections)) {
       const section = document.createElement('section'); section.className = `collection ${name.toLowerCase()}`;
       const heading = document.createElement('div'); heading.className = 'collection-head';
-      const title = document.createElement('h3'); title.textContent = name; heading.append(title); section.append(heading);
+      const title = document.createElement('h3'); title.textContent = name; heading.append(title);
+      if (name !== 'Music') section.append(heading);
       const gallery = document.createElement('div'); gallery.className = 'gallery';
       for (const [label, detail] of entries) {
         const figure = document.createElement('figure');
@@ -251,9 +248,8 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:25px 0 42px;b
           item.textContent = genre;
           genres.append(item);
         }
-        const composer = document.createElement('p');
-        composer.textContent = 'Shiro Sagisu';
         section.id = 'music';
+        section.setAttribute('aria-label', 'Music');
         const stage = document.createElement('div');
         stage.className = 'interest-stage';
         const lettering = document.createElement('div');
@@ -270,7 +266,7 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:25px 0 42px;b
           loading: 'lazy'
         });
         stage.append(portrait, genres, lettering);
-        section.append(stage, composer);
+        section.append(stage);
       }
       if (entries.length) section.append(gallery);
       root.append(section);
