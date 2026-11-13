@@ -135,7 +135,8 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:25px 0 42px;b
       justify-self:end; width:280%; translate:5cqw -6cqw;
       mask-image:
         linear-gradient(to bottom,#000 0 55%,transparent 98%),
-        linear-gradient(to right,transparent 44%,#000 64%);
+        linear-gradient(to right,transparent 44%,#000 64%),
+        linear-gradient(to bottom right,#000 0 75%,transparent 94%);
     }
     .interest-lettering {
       background:var(--accent) url("assets/burgundy-texture.png") center/cover;
