@@ -106,6 +106,16 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:25px 0 42px;b
       object-fit:contain; object-position:right bottom;
       mask-image:linear-gradient(to bottom,#000 0 55%,transparent 100%);
     }
+    #music .interest-portrait { right:25%; }
+    .music-genres {
+      position:absolute; z-index:1; left:72%; top:24%; margin:0;
+      padding:0; list-style:none;
+    }
+    .music-genres li + li { margin-top:.16em; }
+    @media(max-width:600px) {
+      #music .interest-portrait { right:24%; }
+      .music-genres.role-stack { display:block; left:66%; top:23%; }
+    }
     .interest-quote { max-width:700px; margin:0 0 24px; font:clamp(21px,3vw,32px)/1.4 Georgia,serif; }
     .interest-quote p { margin:0 0 10px; }
     .interest-quote cite { font:14px/1.5 Arial,sans-serif; color:var(--muted); }
@@ -228,8 +238,15 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:25px 0 42px;b
         figure.append(caption); gallery.append(figure);
       }
       if (name === 'Music') {
-        const genres = document.createElement('p');
-        genres.textContent = 'Shiro Sagisu · Jazz · Metal · Classical · R&B / Soul · Instrumental';
+        const genres = document.createElement('ul');
+        genres.className = 'role-stack music-genres';
+        for (const genre of ['Jazz', 'Metal', 'Classical', 'R&B / Soul', 'Instrumental']) {
+          const item = document.createElement('li');
+          item.textContent = genre;
+          genres.append(item);
+        }
+        const composer = document.createElement('p');
+        composer.textContent = 'Shiro Sagisu';
         section.id = 'music';
         const stage = document.createElement('div');
         stage.className = 'interest-stage';
@@ -246,8 +263,8 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:25px 0 42px;b
           alt: 'Ahmed seated and playing the oud',
           loading: 'lazy'
         });
-        stage.append(lettering, portrait);
-        section.append(stage, genres);
+        stage.append(lettering, portrait, genres);
+        section.append(stage, composer);
       }
       if (entries.length) section.append(gallery);
       root.append(section);
