@@ -47,25 +47,33 @@
 .fact p{margin:0;color:var(--muted);font-size:14px}
 .collection{margin-top:75px}.collection:first-of-type{margin-top:0}
 .gallery {
-  position:relative; isolation:isolate; width:min(50%,225px);
-  margin:0 auto; touch-action:pan-y;
+  position:relative; display:grid; isolation:isolate;
+  width:min(48%,260px); margin:0 auto;
+  perspective:1000px; touch-action:pan-y; cursor:grab; user-select:none;
 }
-.games .gallery { width:min(57%,420px); }
-.gallery::before,.gallery::after {
-  content:""; position:absolute; z-index:-1;
-  inset:0 0 auto; aspect-ratio:var(--art-ratio);
-  background:#21141a; border:1px solid #51303c;
-  border-radius:4px;
+.gallery:active { cursor:grabbing; }
+.games .gallery { width:min(51%,445px); }
+.gallery::before {
+  content:""; position:absolute; z-index:-1; inset:-20% -55%;
+  background:radial-gradient(ellipse,#5b223550,transparent 67%);
+  pointer-events:none;
 }
-.gallery::before { transform:rotate(-6deg); }
-.gallery::after { transform:rotate(5deg); }
-.gallery figure[data-direction] { animation:card-swap 280ms ease-out; }
-.gallery figure[data-direction="previous"] { --card-entry:-32px; }
-@keyframes card-swap {
-  from { transform:translateX(var(--card-entry,32px)) rotate(2deg); opacity:.35; }
-  to { transform:none; opacity:1; }
+.gallery figure {
+  grid-area:1 / 1; visibility:hidden; opacity:0; pointer-events:none;
+  transition:transform 460ms cubic-bezier(.22,.75,.25,1), opacity 380ms, filter 380ms;
 }
-@media(prefers-reduced-motion:reduce) { .gallery figure[data-direction] { animation:none; } }
+.gallery figure[data-slot="current"] {
+  visibility:visible; opacity:1; z-index:2; transform:translateZ(0);
+  pointer-events:auto;
+}
+.gallery figure:is([data-slot="previous"],[data-slot="next"]) {
+  visibility:visible; opacity:1; filter:brightness(.48); z-index:1;
+  transform:translateX(var(--card-offset)) translateY(5%) rotateY(var(--card-tilt)) scale(.83);
+}
+.gallery figure[data-slot="previous"] { --card-offset:-68%; --card-tilt:33deg; }
+.gallery figure[data-slot="next"] { --card-offset:68%; --card-tilt:-33deg; }
+.gallery figure:not([data-slot="current"]) figcaption { visibility:hidden; }
+@media(prefers-reduced-motion:reduce) { .gallery figure { transition:none; } }
 .deck-controls { display:flex; justify-content:center; align-items:center; gap:16px; margin-top:14px; }
 .deck-controls button {
   min-width:44px; min-height:44px; padding:0;
@@ -131,12 +139,12 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:25px 0 42px;b
       font-weight:900; line-height:.86; letter-spacing:-.055em; text-transform:uppercase;
     }
     .collection-deck {
-      position:relative; isolation:isolate; container-type:inline-size;
+      position:relative; isolation:isolate; container-type:inline-size; overflow:clip;
       padding-block:clamp(24px,5vw,65px) 0;
       background:radial-gradient(ellipse at center,#2b1119,transparent 68%);
     }
     .collection-deck h3 {
-      position:absolute; z-index:-1; inset:0 0 64px;
+      pointer-events:none; position:absolute; z-index:-1; inset:0 0 64px;
       display:grid; place-items:center; margin:0;
       font-size:clamp(48px,22cqw,300px); white-space:nowrap;
     }
@@ -323,18 +331,21 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:25px 0 42px;b
         next.setAttribute('aria-label', 'Next ' + title.textContent + ' card');
         const position = document.createElement('output');
         let active = 0;
-        cards.forEach((card, index) => { card.hidden = index !== active; });
-        position.textContent = '1 / ' + cards.length;
-        function swap(direction) {
-          cards[active].hidden = true;
-          delete cards[active].dataset.direction;
-          active = (active + direction + cards.length) % cards.length;
-          const card = cards[active];
-          card.hidden = false;
-          card.dataset.direction = direction < 0 ? 'previous' : 'next';
+        function showCards() {
+          cards.forEach((card, index) => {
+            const distance = (index - active + cards.length) % cards.length;
+            card.dataset.slot = distance === 0 ? 'current' :
+              distance === 1 ? 'next' : distance === cards.length - 1 ? 'previous' : 'offstage';
+            card.setAttribute('aria-hidden', String(distance !== 0));
+          });
           position.textContent = (active + 1) + ' / ' + cards.length;
-          position.setAttribute('aria-label', card.querySelector('figcaption').textContent);
+          position.setAttribute('aria-label', cards[active].querySelector('figcaption').textContent);
         }
+        function swap(direction) {
+          active = (active + direction + cards.length) % cards.length;
+          showCards();
+        }
+        showCards();
         previous.addEventListener('click', () => swap(-1));
         next.addEventListener('click', () => swap(1));
         controls.addEventListener('keydown', event => {
@@ -344,7 +355,8 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:25px 0 42px;b
         });
         let start;
         gallery.addEventListener('pointerdown', event => {
-          if (event.pointerType !== 'touch' || !event.isPrimary) return;
+          if (!event.isPrimary || event.button !== 0) return;
+          if (event.pointerType === 'mouse') gallery.setPointerCapture(event.pointerId);
           start = {x: event.clientX, y: event.clientY};
         });
         gallery.addEventListener('pointercancel', () => { start = undefined; });
