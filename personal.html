@@ -126,12 +126,10 @@
         title.textContent = name === 'Literature' ? 'Books' : name;
         section.setAttribute('aria-labelledby', title.id);
         const cards = Array.from(gallery.children);
-        const controls = document.createElement('div');
-        controls.className = 'deck-controls';
         gallery.tabIndex = 0;
         gallery.setAttribute('role', 'group');
         gallery.setAttribute('aria-label', title.textContent + ' carousel. Use the left and right arrow keys to browse.');
-        const position = document.createElement('output');
+        const announcement = document.createElement('output');
         let active = 0;
         const buttons = cards.map((card, index) => {
           const button = document.createElement('button');
@@ -155,8 +153,7 @@
             card.setAttribute('aria-hidden', String(distance !== 0 && !neighbor));
             card.querySelector('img')?.setAttribute('aria-hidden', String(neighbor));
           });
-          position.textContent = (active + 1) + ' / ' + cards.length;
-          position.setAttribute('aria-label', cards[active].querySelector('figcaption').textContent);
+          announcement.textContent = entries[active][0];
         }
         function swap(direction) {
           active = (active + direction + cards.length) % cards.length;
@@ -168,8 +165,7 @@
           event.preventDefault();
           swap(event.key === 'ArrowLeft' ? -1 : 1);
         });
-        controls.append(position);
-        deck.append(title, gallery, controls);
+        deck.append(title, gallery, announcement);
         section.append(deck);
       }
       root.append(section);
