@@ -100,35 +100,41 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:25px 0 42px;b
       font-weight:900; line-height:.86; letter-spacing:-.055em; text-transform:uppercase;
     }
     .interest-lettering span { display:block; }
-    #music .interest-lettering { top:14%; font-size:clamp(82px,26cqw,290px); }
+    #music .interest-lettering { top:17%; left:27%; right:5%; text-align:right; font-size:clamp(62px,23cqw,290px); }
     .interest-portrait {
       position:absolute; right:2%; bottom:0; width:58%; height:100%;
       object-fit:contain; object-position:right bottom;
       mask-image:linear-gradient(to bottom,#000 0 55%,transparent 100%);
     }
     #music .interest-portrait {
-      z-index:2; right:37%;
+      z-index:2; right:48%; width:50%;
       mask-image:
         linear-gradient(to bottom,#000 0 55%,transparent 100%),
         linear-gradient(to right,#000 0 calc(100% - clamp(34px,6vw,90px)),transparent 100%);
       mask-composite:intersect;
     }
     .music-genres {
-      position:absolute; z-index:1; left:60%; top:24%; margin:0;
+      position:absolute; z-index:1; left:5%; top:24%; margin:0;
       padding:0; list-style:none;
     }
     .music-genres li + li { margin-top:.16em; }
     @media(max-width:600px) {
-      #music .interest-portrait { right:32%; }
-      .music-genres.role-stack { display:block; left:58%; top:23%; }
+      #music .interest-portrait { right:36%; width:53%; }
+      .music-genres.role-stack { display:block; z-index:3; left:3%; top:23%; text-shadow:0 1px 6px var(--bg); }
     }
+    #sports .interest-stage { display:grid; place-items:center; }
     #sports .interest-portrait {
+      opacity:.60;
       mask-image:
         linear-gradient(to bottom,#000 0 40%,transparent 88%),
         linear-gradient(to right,#000 0 calc(100% - clamp(46px,11vw,120px)),transparent 100%);
       mask-composite:intersect;
     }
-    .interest-quote { max-width:700px; margin:0 auto 24px; text-align:center; font:clamp(21px,3vw,32px)/1.4 Georgia,serif; }
+    .interest-quote {
+      position:relative; width:min(86%,720px); margin:0; text-align:center;
+      font:clamp(21px,4cqw,54px)/1.15 Georgia,serif;
+      text-wrap:balance;
+    }
     .interest-quote p { margin:0 0 10px; }
     .interest-quote cite { font:14px/1.5 Arial,sans-serif; color:var(--muted); }
     @media(min-width:901px) {
@@ -170,13 +176,12 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:25px 0 42px;b
       <section id="sports" class="collection" aria-labelledby="sports-title">
         <div class="collection-head"><h3 id="sports-title">Sports</h3></div>
         <div class="interest-stage">
-          <div class="interest-lettering" aria-hidden="true"><span>Beauty &amp;</span><span>Strength</span></div>
+          <blockquote class="interest-quote">
+            <p>“It is a shame for a man to grow old without seeing the beauty and strength of which his body is capable.”</p>
+            <cite>Socrates</cite>
+          </blockquote>
           <img class="interest-portrait" src="assets/portraits/sports-profile.webp" width="480" height="600" alt="Ahmed in a side profile mirror portrait" loading="lazy">
         </div>
-        <blockquote class="interest-quote">
-          <p>“It is a shame for a man to grow old without seeing the beauty and strength of which his body is capable.”</p>
-          <cite>Socrates</cite>
-        </blockquote>
         <ul class="simple-list"><li>Strength training</li><li>Boxing</li><li>Basketball</li></ul>
       </section>
     </section>
