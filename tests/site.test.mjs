@@ -2,13 +2,14 @@ import { readFileSync, existsSync } from 'node:fs';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 
+const css = readFileSync(new URL('../site.css', import.meta.url), 'utf8');
 const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
 
 test('protected hero and GitHub Pages domain remain in place', () => {
   assert.match(html, /class="hero-name"/);
   assert.match(html, /class="portrait" src="assets\/khalil-cutout-v3\.webp"/);
-  assert.match(html, /mask-image:linear-gradient/);
-  assert.match(html, /burgundy-texture\.png/);
+  assert.match(css, /mask-image:linear-gradient/);
+  assert.match(css, /burgundy-texture\.png/);
   assert.equal(readFileSync(new URL('../CNAME', import.meta.url), 'utf8').trim(), 'daoudiahmedkhalil.com');
 });
 
