@@ -46,11 +46,38 @@
 .fact h4{margin:0 0 4px;font-family:Georgia,serif;font-size:22px;font-weight:400}
 .fact p{margin:0;color:var(--muted);font-size:14px}
 .collection{margin-top:75px}.collection:first-of-type{margin-top:0}
-.gallery{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;width:min(94%,1180px);margin:24px auto 0}
+.gallery {
+  position:relative; isolation:isolate; width:min(50%,225px);
+  margin:0 auto; touch-action:pan-y;
+}
+.games .gallery { width:min(57%,420px); }
+.gallery::before,.gallery::after {
+  content:""; position:absolute; z-index:-1;
+  inset:0 0 auto; aspect-ratio:var(--art-ratio);
+  background:#21141a; border:1px solid #51303c;
+  border-radius:4px;
+}
+.gallery::before { transform:rotate(-6deg); }
+.gallery::after { transform:rotate(5deg); }
+.gallery figure[data-direction] { animation:card-swap 280ms ease-out; }
+.gallery figure[data-direction="previous"] { --card-entry:-32px; }
+@keyframes card-swap {
+  from { transform:translateX(var(--card-entry,32px)) rotate(2deg); opacity:.35; }
+  to { transform:none; opacity:1; }
+}
+@media(prefers-reduced-motion:reduce) { .gallery figure[data-direction] { animation:none; } }
+.deck-controls { display:flex; justify-content:center; align-items:center; gap:16px; margin-top:14px; }
+.deck-controls button {
+  min-width:44px; min-height:44px; padding:0;
+  border:1px solid var(--line); border-radius:50%;
+  background:var(--panel); color:var(--ink); font-size:20px; cursor:pointer;
+}
+.deck-controls button:hover { border-color:var(--accent); }
+.deck-controls button:focus-visible { outline:2px solid var(--accent); outline-offset:3px; }
+.deck-controls output { min-width:48px; text-align:center; color:var(--muted); font-size:13px; }
 .gallery figure{min-width:0;margin:0}
 .collection{--art-ratio:2/3}
 .games{--art-ratio:16/9}
-.games .gallery{grid-template-columns:repeat(3,minmax(0,1fr));max-width:1140px}
 .gallery figure > :is(img,.art,.book-cover){
   width:100%;
   aspect-ratio:var(--art-ratio);
@@ -70,12 +97,12 @@
 .book-cover img{height:100%}
 .book-cover-label{position:absolute;inset:auto 3.6% 2.4%;min-height:20.5%;display:grid;align-content:center;gap:1.5cqw;padding:3% 4%;background:rgba(0,0,0,.88);color:#fff;text-align:center;text-transform:uppercase;font-size:6.5cqw;line-height:1.05;font-weight:700}
 .book-cover-label span{font-size:3.9cqw;letter-spacing:.06em}
-.gallery figcaption{padding-top:12px;font-size:13px;line-height:1.35}
+.gallery figcaption{text-align:center;padding:12px 4px 0;min-height:48px;font-size:13px;line-height:1.35}
 .gallery figcaption span{display:block;margin-top:3px;color:var(--muted);font-size:12px}
 .contact{padding:110px 0}.contact-links{display:flex;gap:30px;flex-wrap:wrap;margin-top:35px}
 footer{display:flex;justify-content:space-between;gap:20px;padding:25px 0 42px;border-top:1px solid var(--line);color:#8f8881;font-size:11px}
-@media(max-width:900px){.games .gallery{grid-template-columns:repeat(2,minmax(0,1fr))}.section{padding:75px 0}.intro,.facts{gap:35px}.gallery{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media(max-width:600px){.games .gallery{grid-template-columns:1fr;max-width:340px}nav{gap:8px;font-size:12px;letter-spacing:0}.section-head{display:block}.section-head h2{margin-top:15px}.intro,.facts{grid-template-columns:1fr}.project{grid-template-columns:2.5rem 1fr;gap:13px}.project-status{grid-column:2;text-align:left}.gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 13px;width:92%}.section h2,.contact h2{font-size:clamp(47px,13vw,70px)}.contact{padding:90px 0}footer{flex-direction:column}}
+@media(max-width:900px){.section{padding:75px 0}.intro,.facts{gap:35px}}
+@media(max-width:600px){nav{gap:8px;font-size:12px;letter-spacing:0}.section-head{display:block}.section-head h2{margin-top:15px}.intro,.facts{grid-template-columns:1fr}.project{grid-template-columns:2.5rem 1fr;gap:13px}.project-status{grid-column:2;text-align:left}.section h2,.contact h2{font-size:clamp(47px,13vw,70px)}.contact{padding:90px 0}footer{flex-direction:column}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
 @media (min-width:901px) and (max-height:950px) { .hero{min-height:650px} .hero-name{font-size:clamp(76px,12vw,170px)} .portrait{height:560px} }
@@ -103,13 +130,20 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:25px 0 42px;b
       font-family:Impact,"Arial Narrow",sans-serif; font-size:clamp(30px,14cqw,215px);
       font-weight:900; line-height:.86; letter-spacing:-.055em; text-transform:uppercase;
     }
-    .gallery-title {
-      container-type:inline-size;
-      padding-block:clamp(12px,3vw,36px);
-      text-align:center;
+    .collection-deck {
+      position:relative; isolation:isolate; container-type:inline-size;
+      padding-block:clamp(24px,5vw,65px) 0;
       background:radial-gradient(ellipse at center,#2b1119,transparent 68%);
     }
-    .gallery-title h3 { margin:0; }
+    .collection-deck h3 {
+      position:absolute; z-index:-1; inset:0 0 64px;
+      display:grid; place-items:center; margin:0;
+      font-size:clamp(48px,22cqw,300px); white-space:nowrap;
+    }
+    @media(max-width:600px) {
+      .collection-deck { padding-top:clamp(45px,14cqw,76px); }
+      .collection-deck h3 { inset:0 0 auto; line-height:.9; }
+    }
     .interest-portrait {
       display:block; width:100%; height:clamp(125px,37vw,465px);
       object-fit:contain; object-position:center bottom;
@@ -210,15 +244,6 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:25px 0 42px;b
     const root = document.querySelector('#collections');
     for (const [name, entries] of Object.entries(collections)) {
       const section = document.createElement('section'); section.className = `collection ${name.toLowerCase()}`;
-      if (name !== 'Music') {
-        const heading = document.createElement('div');
-        heading.className = 'gallery-title';
-        const title = document.createElement('h3');
-        title.className = 'interest-lettering';
-        title.textContent = name === 'Literature' ? 'Books' : name;
-        heading.append(title);
-        section.append(heading);
-      }
       const gallery = document.createElement('div'); gallery.className = 'gallery';
       for (const [label, detail] of entries) {
         const figure = document.createElement('figure');
@@ -227,6 +252,7 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:25px 0 42px;b
           const img = document.createElement('img');
           Object.assign(img, image);
           img.loading = 'lazy';
+          img.draggable = false;
           if (titlePanel) {
             const cover = document.createElement('div');
             cover.className = 'book-cover';
@@ -276,7 +302,65 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:25px 0 42px;b
         stage.append(portrait, genres, lettering);
         section.append(stage);
       }
-      if (entries.length) section.append(gallery);
+      if (entries.length) {
+        const deck = document.createElement('div');
+        deck.className = 'collection-deck';
+        const title = document.createElement('h3');
+        title.className = 'interest-lettering';
+        title.id = name.toLowerCase() + '-title';
+        title.textContent = name === 'Literature' ? 'Books' : name;
+        section.setAttribute('aria-labelledby', title.id);
+        const cards = Array.from(gallery.children);
+        const controls = document.createElement('div');
+        controls.className = 'deck-controls';
+        const previous = document.createElement('button');
+        previous.type = 'button';
+        previous.textContent = '←';
+        previous.setAttribute('aria-label', 'Previous ' + title.textContent + ' card');
+        const next = document.createElement('button');
+        next.type = 'button';
+        next.textContent = '→';
+        next.setAttribute('aria-label', 'Next ' + title.textContent + ' card');
+        const position = document.createElement('output');
+        let active = 0;
+        cards.forEach((card, index) => { card.hidden = index !== active; });
+        position.textContent = '1 / ' + cards.length;
+        function swap(direction) {
+          cards[active].hidden = true;
+          delete cards[active].dataset.direction;
+          active = (active + direction + cards.length) % cards.length;
+          const card = cards[active];
+          card.hidden = false;
+          card.dataset.direction = direction < 0 ? 'previous' : 'next';
+          position.textContent = (active + 1) + ' / ' + cards.length;
+          position.setAttribute('aria-label', card.querySelector('figcaption').textContent);
+        }
+        previous.addEventListener('click', () => swap(-1));
+        next.addEventListener('click', () => swap(1));
+        controls.addEventListener('keydown', event => {
+          if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+          event.preventDefault();
+          swap(event.key === 'ArrowLeft' ? -1 : 1);
+        });
+        let start;
+        gallery.addEventListener('pointerdown', event => {
+          if (event.pointerType !== 'touch' || !event.isPrimary) return;
+          start = {x: event.clientX, y: event.clientY};
+        });
+        gallery.addEventListener('pointercancel', () => { start = undefined; });
+        gallery.addEventListener('pointerup', event => {
+          if (!start || !event.isPrimary) return;
+          const distance = event.clientX - start.x;
+          const vertical = event.clientY - start.y;
+          start = undefined;
+          if (Math.abs(distance) > 35 && Math.abs(distance) > Math.abs(vertical)) {
+            swap(distance < 0 ? 1 : -1);
+          }
+        });
+        controls.append(previous, position, next);
+        deck.append(title, gallery, controls);
+        section.append(deck);
+      }
       root.append(section);
     }
   </script>
