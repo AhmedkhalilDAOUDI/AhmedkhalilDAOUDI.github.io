@@ -131,16 +131,29 @@
         gallery.tabIndex = 0;
         gallery.setAttribute('role', 'group');
         gallery.setAttribute('aria-label', title.textContent + ' carousel. Use the left and right arrow keys to browse.');
-        const hint = document.createElement('span');
-        hint.textContent = 'Drag or swipe';
         const position = document.createElement('output');
         let active = 0;
+        const buttons = cards.map((card, index) => {
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.setAttribute('aria-label', 'Show ' + entries[index][0]);
+          button.addEventListener('click', () => {
+            active = index;
+            gallery.focus({preventScroll:true});
+            showCards();
+          });
+          card.append(button);
+          return button;
+        });
         function showCards() {
           cards.forEach((card, index) => {
             const distance = (index - active + cards.length) % cards.length;
             card.dataset.slot = distance === 0 ? 'current' :
               distance === 1 ? 'next' : distance === cards.length - 1 ? 'previous' : 'offstage';
-            card.setAttribute('aria-hidden', String(distance !== 0));
+            const neighbor = distance === 1 || distance === cards.length - 1;
+            buttons[index].hidden = !neighbor;
+            card.setAttribute('aria-hidden', String(distance !== 0 && !neighbor));
+            card.querySelector('img')?.setAttribute('aria-hidden', String(neighbor));
           });
           position.textContent = (active + 1) + ' / ' + cards.length;
           position.setAttribute('aria-label', cards[active].querySelector('figcaption').textContent);
@@ -155,36 +168,7 @@
           event.preventDefault();
           swap(event.key === 'ArrowLeft' ? -1 : 1);
         });
-        let start;
-        function resetDrag() {
-          start = undefined;
-          delete gallery.dataset.dragging;
-          gallery.style.removeProperty('--drag-x');
-        }
-        gallery.addEventListener('pointerdown', event => {
-          if (!event.isPrimary || event.button !== 0) return;
-          gallery.setPointerCapture(event.pointerId);
-          start = {x: event.clientX, y: event.clientY};
-        });
-        gallery.addEventListener('pointermove', event => {
-          if (!start || !event.isPrimary) return;
-          const distance = event.clientX - start.x;
-          if (Math.abs(distance) <= Math.abs(event.clientY - start.y)) return;
-          gallery.dataset.dragging = '';
-          gallery.style.setProperty('--drag-x', Math.max(-75, Math.min(75, distance)) + 'px');
-        });
-        gallery.addEventListener('pointercancel', resetDrag);
-        gallery.addEventListener('lostpointercapture', resetDrag);
-        gallery.addEventListener('pointerup', event => {
-          if (!start || !event.isPrimary) return;
-          const distance = event.clientX - start.x;
-          const vertical = event.clientY - start.y;
-          resetDrag();
-          if (Math.abs(distance) > 35 && Math.abs(distance) > Math.abs(vertical)) {
-            swap(distance < 0 ? 1 : -1);
-          }
-        });
-        controls.append(hint, position);
+        controls.append(position);
         deck.append(title, gallery, controls);
         section.append(deck);
       }

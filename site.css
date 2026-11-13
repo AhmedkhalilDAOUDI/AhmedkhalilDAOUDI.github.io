@@ -49,10 +49,8 @@
 .gallery {
   position:relative; display:grid; isolation:isolate;
   width:min(30%,190px); margin:0 auto;
-  perspective:1000px; touch-action:pan-y; cursor:grab; user-select:none;
+  perspective:1000px;
 }
-.gallery[data-dragging] { cursor:grabbing; }
-.gallery[data-dragging] figure { transition:none; }
 .gallery:focus-visible { outline:2px solid var(--accent); outline-offset:6px; }
 .games .gallery { width:min(38%,310px); }
 .gallery::before {
@@ -61,12 +59,11 @@
   pointer-events:none;
 }
 .gallery figure {
-  grid-area:1 / 1; visibility:hidden; opacity:0; pointer-events:none;
-  translate:var(--drag-x,0px) 0;
-  transition:translate 300ms ease-out, transform 460ms cubic-bezier(.22,.75,.25,1), opacity 380ms, filter 380ms;
+  position:relative; grid-area:1 / 1; visibility:hidden; opacity:0; pointer-events:none;
+  transition:transform 460ms cubic-bezier(.22,.75,.25,1), opacity 380ms, filter 380ms;
 }
 .gallery figure[data-slot="current"] {
-  visibility:visible; opacity:1; z-index:2; transform:translateZ(0);
+  visibility:visible; opacity:1; z-index:2; transform:translateZ(0); pointer-events:auto;
   pointer-events:auto;
 }
 .gallery figure:is([data-slot="previous"],[data-slot="next"]) {
@@ -75,6 +72,12 @@
 }
 .gallery figure[data-slot="previous"] { --card-offset:-68%; --card-tilt:33deg; }
 .gallery figure[data-slot="next"] { --card-offset:68%; --card-tilt:-33deg; }
+.gallery figure button {
+  position:absolute; inset:0 0 auto; width:100%; aspect-ratio:var(--art-ratio);
+  padding:0; border:0; background:transparent; cursor:pointer;
+}
+.gallery figure button:focus-visible { outline:3px solid white; outline-offset:-4px; }
+.gallery figure:has(button:not([hidden])) { pointer-events:auto; }
 .gallery figure:not([data-slot="current"]) figcaption { visibility:hidden; }
 @media(prefers-reduced-motion:reduce) { .gallery figure { transition:none; } }
 .deck-controls {
@@ -146,7 +149,7 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:25px 0 42px;b
     }
     .collection-deck {
       position:relative; isolation:isolate; container-type:inline-size; overflow:clip;
-      padding-block:clamp(70px,24cqw,290px) 4px;
+      display:grid; align-items:center; padding-block:12px 4px;
       background:radial-gradient(ellipse at center,#2b1119,transparent 68%);
     }
     .collection .collection-deck h2,
@@ -155,8 +158,10 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:25px 0 42px;b
       font-size:clamp(60px,32cqw,410px); line-height:.88;
     }
     .collection .collection-deck h2 {
-      pointer-events:none; position:absolute; z-index:-1; inset:0 0 auto;
+      pointer-events:none; grid-area:1 / 1; z-index:-1;
     }
+    .collection-deck .gallery { grid-area:1 / 1; margin-top:48px; }
+    .collection-deck .deck-controls { grid-row:2; }
     #sports { container-type:inline-size; }
     .collection .notes-title { font-size:clamp(54px,20cqw,190px); }
     .interest-portrait {
