@@ -80,10 +80,6 @@
 .gallery figure:has(button:not([hidden])) { pointer-events:auto; }
 .gallery figure:not([data-slot="current"]) figcaption { visibility:hidden; }
 @media(prefers-reduced-motion:reduce) { .gallery figure { transition:none; } }
-.deck-controls {
-  display:flex; justify-content:center; align-items:center; gap:12px;
-  margin:6px 0 0; color:var(--muted); font-size:13px;
-}
 .gallery figure{min-width:0;margin:0}
 .collection{--art-ratio:2/3}
 .games{--art-ratio:16/9}
@@ -161,7 +157,7 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:25px 0 42px;b
       pointer-events:none; grid-area:1 / 1; z-index:-1;
     }
     .collection-deck .gallery { grid-area:1 / 1; margin-top:48px; }
-    .collection-deck .deck-controls { grid-row:2; }
+    .collection-deck output { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); }
     #sports { container-type:inline-size; }
     .collection .notes-title { font-size:clamp(54px,20cqw,190px); }
     .interest-portrait {
