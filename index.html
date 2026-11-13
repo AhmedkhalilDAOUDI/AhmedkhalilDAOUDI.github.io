@@ -87,6 +87,16 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:25px 0 42px;b
 @media (min-width:901px) and (max-height:950px) { .hero{min-height:650px} .hero-name{font-size:clamp(76px,12vw,170px)} .portrait{height:560px} }
 @media (max-width:900px) { .shell{width:min(100% - 36px,700px)} .hero{min-height:650px} .hero-name{font-size:clamp(58px,14.5vw,110px)} .portrait{height:60%;right:5%} }
 @media (max-width:600px) { .masthead{min-height:70px} .brand{font-size:9px;letter-spacing:.06em} .brand-mark{width:30px;height:30px} nav{gap:8px;font-size:12px;letter-spacing:0} .hero{min-height:700px} .hero-top{padding-top:25px} .role-stack{display:grid;grid-template-columns:repeat(2,max-content);gap:5px 17px;font-size:15px;line-height:1} .hero-name{top:115px;left:0;right:0;font-size:clamp(66px,19vw,82px);text-align:left} .portrait{top:318px;height:430px;right:-15%;-webkit-mask-image:linear-gradient(to bottom,#000 0 35%,transparent 65%);mask-image:linear-gradient(to bottom,#000 0 35%,transparent 65%)} .hero-bottom{bottom:25px} .hero-bottom p{max-width:245px;font-size:13px} .scroll-cue{display:none} }
+    .music-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,340px);align-items:center;gap:24px}
+    .sports-portraits{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(12px,4vw,48px);max-width:720px;margin:20px auto 0}
+    .interest-portrait{
+      display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:contain;
+      mask-image:linear-gradient(to bottom,#000 0 60%,transparent 100%);
+    }
+    @media(max-width:600px){
+      .music-layout{grid-template-columns:1fr;gap:0}
+      .music-layout img{width:min(100%,240px);margin-inline:auto}
+    }
 </style></head><body>
   <header class="masthead shell"><a class="brand" href="#top" aria-label="Ahmed Khalil Daoudi, home"><span class="brand-mark">AK</span></a><nav aria-label="Main navigation"><a href="#work">Work</a><a href="#background">Background</a><a href="#personal">Personal</a><a href="#contact">Contact</a></nav></header>
   <main id="top" class="shell">
@@ -115,7 +125,14 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:25px 0 42px;b
       <article class="fact"><h4>Personal Training Coach</h4><p>2023</p></article>
     </div></div></section>
     <section id="personal" class="section" aria-labelledby="personal-title"><div class="section-head"><span class="eyebrow">03 / Personal</span><h2 id="personal-title">Personal.</h2></div><div id="collections"></div>
-      <div class="collection"><div class="collection-head"><h3>Sports</h3></div><ul class="simple-list"><li>Strength training</li><li>Boxing</li><li>Basketball</li></ul></div>
+      <section id="sports" class="collection" aria-labelledby="sports-title">
+        <div class="collection-head"><h3 id="sports-title">Sports</h3></div>
+        <ul class="simple-list"><li>Strength training</li><li>Boxing</li><li>Basketball</li></ul>
+        <div class="sports-portraits">
+          <img class="interest-portrait" src="assets/portraits/sports-monochrome.webp" width="480" height="600" alt="Ahmed in a black and white mirror portrait" loading="lazy">
+          <img class="interest-portrait" src="assets/portraits/sports-profile.webp" width="480" height="600" alt="Ahmed in a side profile mirror portrait" loading="lazy">
+        </div>
+      </section>
     </section>
     <section id="contact" class="contact" aria-labelledby="contact-title"><span class="eyebrow">04 / Contact</span><h2 id="contact-title">Contact.</h2><div class="contact-links"><a class="text-link" href="https://github.com/AhmedkhalilDAOUDI">GitHub ↗</a><a class="text-link" href="https://www.linkedin.com/in/ahmed-khalil-daoudi-94900922b">LinkedIn ↗</a><a class="text-link" href="https://www.instagram.com/ewa_khalil/">Instagram ↗</a></div></section>
   </main>
@@ -188,7 +205,20 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:25px 0 42px;b
       if (name === 'Music') {
         const genres = document.createElement('p');
         genres.textContent = 'Shiro Sagisu · Jazz · Metal · Classical · R&B / Soul · Instrumental';
-        section.append(genres);
+        section.id = 'music';
+        const layout = document.createElement('div');
+        layout.className = 'music-layout';
+        const portrait = document.createElement('img');
+        Object.assign(portrait, {
+          className: 'interest-portrait',
+          src: 'assets/portraits/music-oud.webp',
+          width: 480,
+          height: 600,
+          alt: 'Ahmed seated and playing the oud',
+          loading: 'lazy'
+        });
+        layout.append(genres, portrait);
+        section.append(layout);
       }
       if (entries.length) section.append(gallery);
       root.append(section);
