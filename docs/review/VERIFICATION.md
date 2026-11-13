@@ -26,3 +26,10 @@ Verdict: draft; the redesign does not yet meet every acceptance criterion.
 - This pass did not independently repeat the external artwork-license or project-code research. It does not establish Safari/Firefox behavior, real-device behavior, or full assistive-technology accessibility.
 
 No merge or deployment was performed.
+
+
+## Publication update — 13 November 2026
+
+Ahmed supplied six game images and explicitly requested publishing the redesign. These images are now included. Twelve collection slots remain pending (four films, League of Legends, one book, six fragrances). The earlier 18-slot finding above records the previous revision.
+
+Repeated the six-width HTTP browser checks after adding images: all included images decode, no horizontal overflow or page errors, internal anchors resolve, and protected hero geometry remains unchanged. Game artwork retains its natural aspect ratio; the game gallery uses three columns on desktop, two on tablet, and one on mobile. The two Node tests and whitespace validation pass.

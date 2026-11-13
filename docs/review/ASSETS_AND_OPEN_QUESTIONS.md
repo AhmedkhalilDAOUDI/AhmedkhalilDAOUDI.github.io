@@ -23,7 +23,7 @@ These are identifiable Standard Ebooks covers, resized from 1400 × 2100 JPEG to
 No unrelated or AI-generated replacement artwork was added. The visual slots are plainly marked **Artwork pending**.
 
 - Cinema: I Origins, Parasite, Heretic, Decision to Leave. Official pages identify the films, but permission to republish their posters was not established.
-- Games: The Witcher 3, Sekiro, Bloodborne, League of Legends, Elden Ring, Ghost of Tsushima, Dark Souls III. Clean artwork still requires a verified right to republish. [Sony's website terms](https://www.playstation.com/en-gb/legal/website-terms-of-use/) do not grant general display rights for PlayStation site assets. Bloodborne and Ghost of Tsushima must have no PS4 banner.
+- Games: League of Legends artwork remains missing. The other six game images were supplied by Ahmed for publication on 13 November 2026; see the source mapping below.
 - Literature: a standalone published cover for The Death of Ivan Ilyich with suitable reuse rights.
 - Fragrances: accurate, reusable bottle photos for all six listed fragrances, with exact edition/concentration verified.
 - Music: no album artwork until Ahmed supplies a confirmed album list.
@@ -34,3 +34,19 @@ No unrelated or AI-generated replacement artwork was added. The visual slots are
 - The previous site contained `daoudiahmedkhalil@gmail.com`. The brief says no public email address is confirmed, so it was removed pending confirmation.
 - A public NAGISEN screenshot in its repository is branded “Daywell” and shows nutrition targets; it was not published here pending confirmation that this visual is suitable.
 - No further institution names, degree titles, dates, credentials, or personal statistics were inferred.
+
+
+## Game artwork supplied for publication — 13 November 2026
+
+These six files were supplied directly by Ahmed with an instruction to publish the changes. They were visually checked, saved locally as WebP, and proportionally resized to at most 1200px. No cropping or generated replacement was applied. The supplied files do not include independent license metadata; no public-domain license is asserted.
+
+| Game | Supplied file | Website asset |
+| --- | --- | --- |
+| The Witcher 3: Wild Hunt | 7335.jpeg.webp | assets/games/witcher-3.webp |
+| Sekiro: Shadows Die Twice | CelJaded-Sekiro-Shadows-Die-Twice-Banner.jpg | assets/games/sekiro.webp |
+| Bloodborne | il_570xN.1168410384_7rau.avif | assets/games/bloodborne.webp |
+| Elden Ring | Elden-Ring-4.avif | assets/games/elden-ring.webp |
+| Ghost of Tsushima | images.jpeg | assets/games/ghost-of-tsushima.webp |
+| Dark Souls III | ds3_game-thumbnail.jpg | assets/games/dark-souls-3.webp |
+
+Bloodborne and Ghost of Tsushima have no PlayStation retail header.
