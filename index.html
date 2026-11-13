@@ -54,6 +54,9 @@
 .art{display:grid;place-items:center;width:100%;aspect-ratio:2/3;padding:20px;border:1px solid var(--line);background:#14100f;color:#766d67;text-align:center;font-family:Georgia,serif;font-size:clamp(20px,2vw,30px);line-height:1.1}
 .games .gallery{grid-template-columns:repeat(3,minmax(0,1fr))}.games .art{aspect-ratio:16/9}.fragrances .art{aspect-ratio:1/1}
 .gallery img{display:block;width:100%;height:auto;border:1px solid var(--line)}
+.book-cover{position:relative;container-type:inline-size}
+.book-cover-label{position:absolute;inset:auto 3.6% 2.4%;min-height:20.5%;display:grid;align-content:center;gap:1.5cqw;padding:3% 4%;background:rgba(0,0,0,.88);color:#fff;text-align:center;text-transform:uppercase;font-size:6.5cqw;line-height:1.05;font-weight:700}
+.book-cover-label span{font-size:3.9cqw;letter-spacing:.06em}
 .gallery figcaption{padding-top:12px;font-size:13px;line-height:1.35}
 .gallery figcaption span{display:block;margin-top:3px;color:var(--muted);font-size:12px}
 .simple-list{display:flex;flex-wrap:wrap;gap:12px 26px;padding:0;margin:24px 0 0;list-style:none;font-family:Georgia,serif;font-size:20px}
@@ -89,7 +92,6 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:25px 0 42px;b
     <section id="background" class="section" aria-labelledby="background-title"><div class="section-head"><span class="eyebrow">02 / Background</span><h2 id="background-title">Background.</h2></div><div class="facts"><div><h3>Education</h3>
       <article class="fact"><h4>Master — Data Engineering</h4><p>EHTP</p></article>
       <article class="fact"><h4>Master — QHSE</h4><p>INSA / UPHF</p></article>
-      <article class="fact"><h4>Executive Master — Big Data &amp; AI</h4><p>Ongoing executive studies</p></article>
       <article class="fact"><h4>Bachelor's Degree — MASS</h4><p>Applied Mathematics to Social Sciences · Finance and actuarial focus</p></article>
     </div><div><h3>Experience</h3>
       <article class="fact"><h4>Head of QHSE Department</h4><p>CANALTEX · 2024–2026</p></article>
@@ -110,6 +112,12 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:25px 0 42px;b
       Music: []
     };
     const images = {
+      "League of Legends": {"src": "assets/games/league-of-legends.webp", "width": 739, "height": 415, "alt": "League of Legends artwork"},
+      "Heretic": {"src": "assets/films/heretic.webp", "width": 771, "height": 1050, "alt": "Heretic artwork"},
+      "Parasite": {"src": "assets/films/parasite.webp", "width": 709, "height": 1050, "alt": "Parasite artwork"},
+      "Decision to Leave": {"src": "assets/films/decision-to-leave.webp", "width": 735, "height": 1050, "alt": "Decision to Leave artwork"},
+      "I Origins": {"src": "assets/films/i-origins.webp", "width": 787, "height": 1050, "alt": "I Origins artwork"},
+      "The Death of Ivan Ilyich": {"src": "assets/covers/death-of-ivan-ilyich.webp", "width": 700, "height": 1050, "alt": "Painting of a reclining man in red", "titlePanel": true},
       "The Witcher 3: Wild Hunt": {"src": "assets/games/witcher-3.webp", "width": 590, "height": 336, "alt": "The Witcher 3: Wild Hunt artwork"},
       "Sekiro: Shadows Die Twice": {"src": "assets/games/sekiro.webp", "width": 1100, "height": 619, "alt": "Sekiro: Shadows Die Twice artwork"},
       "Bloodborne": {"src": "assets/games/bloodborne.webp", "width": 570, "height": 380, "alt": "Bloodborne artwork"},
@@ -131,7 +139,24 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:25px 0 42px;b
       for (const [label, detail] of entries) {
         const figure = document.createElement('figure');
         if (images[label]) {
-          const img = document.createElement('img'); Object.assign(img, images[label]); img.loading = 'lazy'; figure.append(img);
+          const { titlePanel, ...image } = images[label];
+          const img = document.createElement('img');
+          Object.assign(img, image);
+          img.loading = 'lazy';
+          if (titlePanel) {
+            const cover = document.createElement('div');
+            cover.className = 'book-cover';
+            const panel = document.createElement('div');
+            panel.className = 'book-cover-label';
+            panel.setAttribute('aria-hidden', 'true');
+            const author = document.createElement('span');
+            author.textContent = detail;
+            panel.append(label, author);
+            cover.append(img, panel);
+            figure.append(cover);
+          } else {
+            figure.append(img);
+          }
         } else {
           const pending = document.createElement('div'); pending.className = 'art'; pending.textContent = 'Artwork pending'; pending.setAttribute('aria-hidden', 'true'); figure.append(pending);
         }
