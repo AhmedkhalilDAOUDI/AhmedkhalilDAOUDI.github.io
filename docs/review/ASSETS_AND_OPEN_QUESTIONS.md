@@ -22,9 +22,6 @@ These are identifiable Standard Ebooks covers, resized from 1400 × 2100 JPEG to
 
 No unrelated or AI-generated replacement artwork was added. The visual slots are plainly marked **Artwork pending**.
 
-- Cinema: I Origins, Parasite, Heretic, Decision to Leave. Official pages identify the films, but permission to republish their posters was not established.
-- Games: League of Legends artwork remains missing. The other six game images were supplied by Ahmed for publication on 13 November 2026; see the source mapping below.
-- Literature: a standalone published cover for The Death of Ivan Ilyich with suitable reuse rights.
 - Fragrances: accurate, reusable bottle photos for all six listed fragrances, with exact edition/concentration verified.
 - Music: no album artwork until Ahmed supplies a confirmed album list.
 
@@ -50,3 +47,7 @@ These six files were supplied directly by Ahmed with an instruction to publish t
 | Dark Souls III | ds3_game-thumbnail.jpg | assets/games/dark-souls-3.webp |
 
 Bloodborne and Ghost of Tsushima have no PlayStation retail header.
+
+## Additional artwork supplied for publication
+
+Ahmed supplied the posters for I Origins, Parasite, Heretic, and Decision to Leave, the League of Legends image, and the cover of The Death of Ivan Ilyich. The posters and game artwork are proportionally resized and converted to WebP. The Tolstoy artwork was retouched to clear the printed lettering and now uses a black title and author panel on the site.
