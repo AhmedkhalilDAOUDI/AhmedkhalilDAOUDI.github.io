@@ -49,12 +49,22 @@
 .collection-head{display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding-bottom:16px;border-bottom:1px solid var(--line)}
 .collection h3{margin:0;font-family:Georgia,serif;font-size:clamp(28px,3.4vw,43px);font-weight:400}
 .collection-head span{color:var(--muted);font-size:11px;letter-spacing:.1em;text-transform:uppercase}
-.gallery{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;margin-top:24px}
+.gallery{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;width:min(94%,1180px);margin:24px auto 0}
 .gallery figure{min-width:0;margin:0}
-.art{display:grid;place-items:center;width:100%;aspect-ratio:2/3;padding:20px;border:1px solid var(--line);background:#14100f;color:#766d67;text-align:center;font-family:Georgia,serif;font-size:clamp(20px,2vw,30px);line-height:1.1}
-.games .gallery{grid-template-columns:repeat(3,minmax(0,1fr))}.games .art{aspect-ratio:16/9}.fragrances .art{aspect-ratio:1/1}
-.gallery img{display:block;width:100%;height:auto;border:1px solid var(--line)}
+.collection{--art-ratio:2/3}
+.games{--art-ratio:16/9}
+.fragrances{--art-ratio:1/1}
+.games .gallery{grid-template-columns:repeat(3,minmax(0,1fr));max-width:1140px}
+.gallery figure > :is(img,.art,.book-cover){
+  width:100%;
+  aspect-ratio:var(--art-ratio);
+  border:1px solid var(--line);
+  background:#14100f;
+}
+.art{display:grid;place-items:center;padding:20px;color:#766d67;text-align:center;font-family:Georgia,serif;font-size:clamp(20px,2vw,30px);line-height:1.1}
+.gallery img{display:block;width:100%;height:auto;object-fit:contain}
 .book-cover{position:relative;container-type:inline-size}
+.book-cover img{height:100%}
 .book-cover-label{position:absolute;inset:auto 3.6% 2.4%;min-height:20.5%;display:grid;align-content:center;gap:1.5cqw;padding:3% 4%;background:rgba(0,0,0,.88);color:#fff;text-align:center;text-transform:uppercase;font-size:6.5cqw;line-height:1.05;font-weight:700}
 .book-cover-label span{font-size:3.9cqw;letter-spacing:.06em}
 .gallery figcaption{padding-top:12px;font-size:13px;line-height:1.35}
@@ -64,7 +74,7 @@
 .contact{padding:110px 0}.contact-links{display:flex;gap:30px;flex-wrap:wrap;margin-top:35px}
 footer{display:flex;justify-content:space-between;gap:20px;padding:25px 0 42px;border-top:1px solid var(--line);color:#8f8881;font-size:11px}
 @media(max-width:900px){.games .gallery{grid-template-columns:repeat(2,minmax(0,1fr))}.section{padding:75px 0}.intro,.facts{gap:35px}.gallery{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media(max-width:600px){.games .gallery{grid-template-columns:1fr}nav{gap:8px;font-size:12px;letter-spacing:0}.section-head{display:block}.section-head h2{margin-top:15px}.intro,.facts{grid-template-columns:1fr}.project{grid-template-columns:2.5rem 1fr;gap:13px}.project-status{grid-column:2;text-align:left}.gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 13px}.collection-head{align-items:start;flex-direction:column;gap:2px}.section h2,.contact h2{font-size:clamp(47px,13vw,70px)}.contact{padding:90px 0}footer{flex-direction:column}}
+@media(max-width:600px){.games .gallery{grid-template-columns:1fr;max-width:340px}nav{gap:8px;font-size:12px;letter-spacing:0}.section-head{display:block}.section-head h2{margin-top:15px}.intro,.facts{grid-template-columns:1fr}.project{grid-template-columns:2.5rem 1fr;gap:13px}.project-status{grid-column:2;text-align:left}.gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 13px;width:92%}.collection-head{align-items:start;flex-direction:column;gap:2px}.section h2,.contact h2{font-size:clamp(47px,13vw,70px)}.contact{padding:90px 0}footer{flex-direction:column}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
 @media (min-width:901px) and (max-height:950px) { .hero{min-height:650px} .hero-name{font-size:clamp(76px,12vw,170px)} .portrait{height:560px} }
