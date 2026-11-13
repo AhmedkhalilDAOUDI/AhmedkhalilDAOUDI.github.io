@@ -73,12 +73,6 @@
     .experience small { color:var(--accent); font-size:11px; font-weight:700; letter-spacing:.15em; }
     .experience h3 { margin:12px 0; font-family:Georgia,serif; font-size:26px; font-weight:400; }
     .experience p { max-width:530px; color:var(--muted); font-size:15px; }
-    .after-hours { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
-    .after-hours img { width:100%; max-height:500px; object-fit:cover; }
-    .after-hours h2 { margin:15px 0 22px; }
-    .after-hours p { max-width:530px; color:var(--muted); font-size:16px; }
-    .interests { display:flex; flex-wrap:wrap; gap:9px; margin-top:30px; }
-    .interests span { border:1px solid var(--line); padding:8px 11px; color:#d5cbc1; font-size:11px; text-transform:uppercase; letter-spacing:.09em; }
     .contact { padding:120px 0 125px; }
     .contact h2 { max-width:960px; }
     .contact p { max-width:550px; margin:30px 0; color:var(--muted); font-size:18px; }
@@ -99,7 +93,6 @@
       .section-head { grid-template-columns:1fr; gap:20px; }
       .story-grid { margin-left:0; gap:35px; }
       .education { grid-template-columns:1fr; gap:35px; }
-      .after-hours { gap:28px; }
     }
     @media (max-width:600px) {
       .masthead { min-height:70px; }
@@ -116,7 +109,7 @@
       .hero-bottom p { max-width:245px; font-size:13px; }
       .scroll-cue { display:none; }
       .role-bar { flex-wrap:wrap; justify-content:start; gap:9px 18px; font-size:9px; }
-      .story-grid, .skills, .work-grid, .experience, .after-hours { grid-template-columns:1fr; }
+      .story-grid, .skills, .work-grid, .experience { grid-template-columns:1fr; }
       .skill:nth-child(1), .project:first-child { grid-column:auto; display:block; }
       .skill, .project { min-height:0; }
       .section h2, .contact h2 { font-size:clamp(47px,13vw,70px); }
@@ -182,12 +175,8 @@
         <article><small>2023–2024 / TRIA GROUP</small><h3>QHSE &amp; operational processes</h3><p>Contributed to food safety management practices and standardized operational processes, building the process discipline I now bring to data and AI work.</p></article>
       </div>
     </section>
-    <section class="section after-hours" aria-labelledby="after-title">
-      <div><span class="eyebrow">06 / After hours</span><h2 id="after-title">The things<br><em>behind the mood.</em></h2><p>The visual language here comes from things I like: the dark texture of Ombré Leather, the discipline of training, the lines of a Mustang, the tension of Dostoevsky, and the precision of Sekiro.</p><div class="interests"><span>Ombré Leather</span><span>Gym</span><span>Mustang</span><span>Boxing</span><span>Dostoevsky</span><span>Sekiro</span></div></div>
-      <img src="assets/after-hours.webp" width="1120" height="1400" loading="lazy" alt="Dark still life of boxing gloves, a classic steering wheel, a worn book, and indigo fabric">
-    </section>
     <section id="contact" class="contact" aria-labelledby="contact-title">
-      <span class="eyebrow">07 / Contact</span><h2 id="contact-title">Let’s build<br><em>something useful.</em></h2><p>Have a question involving data, models, retrieval, or a messy process? I’d like to hear it.</p>
+      <span class="eyebrow">06 / Contact</span><h2 id="contact-title">Let’s build<br><em>something useful.</em></h2><p>Have a question involving data, models, retrieval, or a messy process? I’d like to hear it.</p>
       <div class="contact-links"><a class="text-link" href="mailto:daoudiahmedkhalil@gmail.com">daoudiahmedkhalil@gmail.com ↗</a><a class="text-link" href="https://github.com/AhmedkhalilDAOUDI">GitHub ↗</a></div>
     </section>
   </main>
