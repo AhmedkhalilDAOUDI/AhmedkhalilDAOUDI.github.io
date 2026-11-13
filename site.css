@@ -120,7 +120,7 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:25px 0 42px;b
     }
     #music .interest-stage {
       grid-template-columns:minmax(0,1fr) minmax(0,1.05fr) minmax(0,1fr);
-      max-width:1050px; margin-inline:auto;
+      max-width:1050px; margin-inline:auto; overflow:clip;
     }
     .music-center { position:relative; z-index:1; text-align:center; }
     .music-center .interest-lettering { margin:0 0 14px; font-size:clamp(28px,12cqw,125px); }
@@ -132,10 +132,10 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:25px 0 42px;b
       mask-composite:intersect;
     }
     #music .music-guitar {
-      justify-self:end; width:150%;
+      justify-self:end; width:280%; translate:5cqw -6cqw;
       mask-image:
         linear-gradient(to bottom,#000 0 55%,transparent 98%),
-        linear-gradient(to right,transparent 12%,#000 48%);
+        linear-gradient(to right,transparent 44%,#000 64%);
     }
     .interest-lettering {
       background:var(--accent) url("assets/burgundy-texture.png") center/cover;
