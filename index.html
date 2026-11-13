@@ -116,10 +116,15 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:25px 0 42px;b
       #music .interest-portrait { right:24%; }
       .music-genres.role-stack { display:block; left:66%; top:23%; }
     }
-    .interest-quote { max-width:700px; margin:0 0 24px; font:clamp(21px,3vw,32px)/1.4 Georgia,serif; }
+    #sports .interest-portrait {
+      mask-image:
+        linear-gradient(to bottom,#000 0 55%,transparent 100%),
+        linear-gradient(to right,#000 0 calc(100% - clamp(12px,3vw,44px)),transparent 100%);
+      mask-composite:intersect;
+    }
+    .interest-quote { max-width:700px; margin:0 auto 24px; text-align:center; font:clamp(21px,3vw,32px)/1.4 Georgia,serif; }
     .interest-quote p { margin:0 0 10px; }
     .interest-quote cite { font:14px/1.5 Arial,sans-serif; color:var(--muted); }
-    .interest-quote a { text-decoration:underline; text-underline-offset:.2em; }
     @media(min-width:901px) {
       .interest-lettering { left:16%; }
       .interest-portrait { right:16%; }
@@ -164,7 +169,7 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:25px 0 42px;b
         </div>
         <blockquote class="interest-quote">
           <p>“It is a shame for a man to grow old without seeing the beauty and strength of which his body is capable.”</p>
-          <cite>Socrates, adapted from <a href="https://cts.perseids.org/read/greekLit/tlg0032/tlg002/perseus-eng2/3.12.5-4.1.3">Xenophon’s Memorabilia 3.12.8</a></cite>
+          <cite>Socrates</cite>
         </blockquote>
         <ul class="simple-list"><li>Strength training</li><li>Boxing</li><li>Basketball</li></ul>
       </section>
