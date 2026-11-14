@@ -13,9 +13,13 @@
     nav a:hover, .text-link:hover { color:var(--accent); }
     .sound-toggle {
       position:fixed; z-index:6; right:clamp(12px,3vw,36px); bottom:max(12px,env(safe-area-inset-bottom));
-      min-height:44px; padding:0 14px; border:1px solid var(--line); border-radius:99px;
-      background:var(--bg); color:var(--ink); font:inherit; font-size:12px; cursor:pointer;
+      width:44px; height:44px; padding:0; border:1px solid var(--line); border-radius:50%;
+      background:var(--bg); color:var(--ink); cursor:pointer;
     }
+    .sound-toggle:not([hidden]) { display:grid; place-items:center; }
+    .sound-toggle:not([data-playing]) .sound-on,
+    .sound-toggle[data-playing] .sound-off { display:none; }
+    .sound-toggle:disabled { opacity:.5; cursor:default; }
     .sound-toggle:focus-visible { outline:2px solid var(--accent); outline-offset:3px; }
     section { scroll-margin-top:25px; }
     .hero { min-height:720px; position:relative; overflow:hidden; border-bottom:1px solid var(--line); }

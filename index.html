@@ -28,8 +28,6 @@
     <section id="contact" class="contact" aria-labelledby="contact-title"><span class="eyebrow">03 / Contact</span><h2 id="contact-title">Contact.</h2><div class="contact-links"><a class="text-link" href="https://github.com/AhmedkhalilDAOUDI">GitHub ↗</a><a class="text-link" href="https://www.linkedin.com/in/ahmed-khalil-daoudi-94900922b">LinkedIn ↗</a><a class="text-link" href="https://www.instagram.com/ewa_khalil/">Instagram ↗</a></div></section>
   </main>
   <footer class="shell"><span>© 2026 Ahmed Khalil Daoudi · Casablanca, Morocco</span></footer>
-  <audio id="homepage-audio" src="assets/homepage-audio.m4a" preload="none"></audio>
-  <button class="sound-toggle" type="button" hidden>Play sound</button>
   <script>
     const personalAnchors = ['#personal', '#music', '#sports'];
     function openPersonalAnchor() {
@@ -39,30 +37,5 @@
     }
     openPersonalAnchor();
     window.addEventListener('hashchange', openPersonalAnchor);
-
-    const audio = document.querySelector('#homepage-audio');
-    const soundToggle = document.querySelector('.sound-toggle');
-
-    function playSound() {
-      audio.play().catch(error => {
-        if (error.name !== 'NotAllowedError' && error.name !== 'AbortError') {
-          soundToggle.textContent = 'Sound unavailable';
-          soundToggle.disabled = true;
-        }
-      });
-    }
-
-    audio.addEventListener('play', () => { soundToggle.textContent = 'Pause sound'; });
-    audio.addEventListener('pause', () => { soundToggle.textContent = 'Play sound'; });
-    audio.addEventListener('ended', () => { soundToggle.textContent = 'Play sound'; });
-    soundToggle.addEventListener('click', () => {
-      if (audio.paused) playSound();
-      else audio.pause();
-    });
-
-    if (!personalAnchors.includes(location.hash)) {
-      soundToggle.hidden = false;
-      playSound();
-    }
   </script>
 </body></html>
