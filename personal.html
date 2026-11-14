@@ -14,6 +14,14 @@
     </section>
   </main>
   <footer class="shell"><span>© 2026 Ahmed Khalil Daoudi · Casablanca, Morocco</span></footer>
+  <audio id="personal-audio" src="assets/personal-audio.m4a" preload="none"></audio>
+  <button class="sound-toggle" type="button" aria-label="Enable sound" title="Enable sound" hidden>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M4 9h4l5-4v14l-5-4H4z"/>
+      <path class="sound-on" d="M16 9a4 4 0 0 1 0 6m2-8a7 7 0 0 1 0 10"/>
+      <path class="sound-off" d="m16 10 4 4m0-4-4 4"/>
+    </svg>
+  </button>
   <script>
     const collections = {
       Cinema: [['I Origins','2014'],['Parasite','2019'],['Heretic','2024'],['Decision to Leave','2022']],
@@ -170,5 +178,36 @@
       }
       root.append(section);
     }
+
+    const audio = document.querySelector('#personal-audio');
+    const soundToggle = document.querySelector('.sound-toggle');
+
+    function updateSoundToggle() {
+      const playing = !audio.paused && !audio.ended;
+      const label = playing ? 'Disable sound' : 'Enable sound';
+      soundToggle.toggleAttribute('data-playing', playing);
+      soundToggle.setAttribute('aria-label', label);
+      soundToggle.title = label;
+    }
+
+    function playSound() {
+      audio.play().catch(error => {
+        if (error.name !== 'NotAllowedError' && error.name !== 'AbortError') {
+          soundToggle.setAttribute('aria-label', 'Sound unavailable');
+          soundToggle.title = 'Sound unavailable';
+          soundToggle.disabled = true;
+        }
+      });
+    }
+
+    for (const event of ['play', 'pause', 'ended']) {
+      audio.addEventListener(event, updateSoundToggle);
+    }
+    soundToggle.addEventListener('click', () => {
+      if (audio.paused || audio.ended) playSound();
+      else audio.pause();
+    });
+    soundToggle.hidden = false;
+    playSound();
   </script>
 </body></html>
