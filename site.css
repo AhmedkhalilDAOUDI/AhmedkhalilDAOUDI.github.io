@@ -196,3 +196,28 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:25px 0 42px;b
     @media(max-width:600px) {
       .music-genres.role-stack { display:block; font-size:clamp(10px,3.2vw,15px); }
     }
+
+.birthday-locked body { display:none; }
+.birthday-page {
+  min-height:100svh; max-width:720px; display:grid; align-content:center;
+  padding-block:48px; text-align:center;
+  background:radial-gradient(ellipse at 50% 50%,#2b1119,transparent 72%);
+}
+.birthday-question h1 {
+  margin:0 0 22px; font:900 clamp(42px,10vw,90px)/.92 Impact,"Arial Narrow",sans-serif;
+  letter-spacing:-.035em; text-transform:uppercase;
+}
+#birthday-form {
+  display:flex; align-items:end; justify-content:center; gap:12px;
+}
+#birthday-form label {
+  display:grid; gap:5px; text-align:left; color:var(--muted);
+  font-size:12px; font-weight:700;
+}
+#birthday-form :is(input,button) {
+  min-height:44px; border:1px solid var(--line); border-radius:6px; padding:8px 12px;
+  background:var(--panel); color:var(--ink); font:inherit; font-size:16px;
+}
+#birthday-form input { width:76px; }
+#birthday-form button { background:#672d3a; padding-inline:20px; cursor:pointer; }
+#birthday-form :is(input,button):focus-visible { outline:2px solid var(--accent); outline-offset:3px; }
