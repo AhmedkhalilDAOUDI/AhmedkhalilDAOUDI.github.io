@@ -4,7 +4,7 @@
   if (!ctx) return;
 
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
-  const colors = ['62,131,255', '125,204,255', '120,164,255', '255,158,157', '255,191,171'];
+  const colors = ['124,27,52', '185,103,116', '158,49,74', '231,137,144', '235,196,174'];
   let width, height, frame;
   let pointer = 0, bend = 0;
 
