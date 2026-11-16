@@ -198,26 +198,62 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:25px 0 42px;b
     }
 
 .birthday-locked body { display:none; }
-.birthday-page {
-  min-height:100svh; max-width:720px; display:grid; align-content:center;
-  padding-block:48px; text-align:center;
-  background:radial-gradient(ellipse at 50% 50%,#2b1119,transparent 72%);
+.birthday-masthead {
+  min-height:76px; display:flex; align-items:center; border-bottom:1px solid var(--line);
 }
+.birthday-page {
+  position:relative; isolation:isolate; min-height:calc(100svh - 76px);
+  display:grid; align-items:center; padding:54px clamp(0px,4vw,64px);
+  background:radial-gradient(ellipse at 72% 51%,#33121d,transparent 62%);
+}
+.birthday-portrait {
+  position:absolute; z-index:-1; bottom:2%; right:1%; width:50%; height:95%;
+  object-fit:contain; object-position:bottom right; pointer-events:none;
+  mask-image:linear-gradient(to bottom,#000 0 44%,transparent 94%);
+}
+.birthday-question { min-width:0; }
 .birthday-question h1 {
-  margin:0 0 22px; font:900 clamp(42px,10vw,90px)/.92 Impact,"Arial Narrow",sans-serif;
+  margin:0 0 clamp(32px,5vw,64px); font:900 clamp(55px,12vw,174px)/.82 Impact,"Arial Narrow",sans-serif;
   letter-spacing:-.035em; text-transform:uppercase;
 }
+.birthday-opening {
+  display:block; margin-bottom:.44em; font-size:.36em; letter-spacing:.04em;
+}
+.birthday-word {
+  display:block; width:max-content; color:var(--accent);
+  background:var(--accent) url("assets/burgundy-texture.png") center/cover;
+  background-clip:text; -webkit-text-fill-color:transparent; filter:brightness(2.8);
+}
 #birthday-form {
-  display:flex; align-items:end; justify-content:center; gap:12px;
+  display:flex; align-items:end; gap:clamp(8px,2vw,16px);
 }
 #birthday-form label {
-  display:grid; gap:5px; text-align:left; color:var(--muted);
-  font-size:12px; font-weight:700;
+  display:grid; gap:8px; color:var(--muted); font-size:11px; line-height:1.2;
+  font-weight:700; letter-spacing:.12em; text-transform:uppercase;
 }
 #birthday-form :is(input,button) {
-  min-height:44px; border:1px solid var(--line); border-radius:6px; padding:8px 12px;
-  background:var(--panel); color:var(--ink); font:inherit; font-size:16px;
+  min-height:54px; border:1px solid #71535a; padding:0 12px; border-radius:0;
+  background:#130e10; color:var(--ink); font:inherit; font-size:16px;
 }
-#birthday-form input { width:76px; }
-#birthday-form button { background:#672d3a; padding-inline:20px; cursor:pointer; }
+#birthday-form input {
+  width:clamp(64px,12vw,98px); text-align:center; font-variant-numeric:tabular-nums;
+  -moz-appearance:textfield; appearance:textfield;
+}
+#birthday-form input::-webkit-inner-spin-button { appearance:none; }
+#birthday-form input::placeholder { color:#aa9297; }
+#birthday-form button {
+  display:inline-flex; align-items:center; justify-content:center; gap:14px;
+  padding-inline:clamp(12px,3vw,26px); background:#7b3446; cursor:pointer;
+  font-size:13px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+}
+#birthday-form button:hover { background:#93445a; }
 #birthday-form :is(input,button):focus-visible { outline:2px solid var(--accent); outline-offset:3px; }
+@media(max-width:700px) {
+  .birthday-masthead { min-height:60px; }
+  .birthday-page {
+    min-height:calc(100svh - 60px); align-items:end; padding:0 0 clamp(54px,11vh,120px);
+    background:radial-gradient(ellipse at 62% 39%,#33121d,transparent 66%);
+  }
+  .birthday-portrait { bottom:auto; top:2%; right:0; width:min(96%,420px); height:auto; }
+  .birthday-question h1 { font-size:clamp(47px,19vw,100px); }
+}
