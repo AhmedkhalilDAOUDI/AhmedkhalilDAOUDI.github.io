@@ -198,64 +198,47 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:25px 0 42px;b
     }
 
 .birthday-locked body { display:none; }
-.birthday-entry { background:#03051b; color:#f4f6ff; }
+.birthday-entry { background:var(--bg); color:var(--ink); }
 .birthday-page {
   position:relative; isolation:isolate; min-height:100svh; overflow:hidden;
-  padding:0 clamp(20px,2.5vw,42px);
-  background:radial-gradient(ellipse at 50% 39%,#101b55 0,#060a2b 40%,#020416 79%);
+  display:grid; align-content:center; padding:32px clamp(20px,4vw,64px) 14svh;
+  background:radial-gradient(ellipse at 50% 39%,#31131e 0,#140c10 44%,var(--bg) 79%);
   font-family:"Helvetica Neue",Arial,sans-serif;
 }
 .birthday-light { position:absolute; inset:0; width:100%; height:100%; z-index:-1; pointer-events:none; }
-.birthday-masthead {
-  min-height:72px; display:flex; align-items:center; gap:10px;
-  font-size:14px; font-weight:500; letter-spacing:-.01em;
-}
-.birthday-masthead span {
-  width:8px; height:8px; border-radius:2px; background:#4364ff;
-  box-shadow:10px 0 #f6f7ff,0 10px #f6f7ff,10px 10px #4364ff;
-  margin:0 10px 10px 0;
-}
 .birthday-content {
   position:relative; display:grid; grid-template-columns:minmax(0,1fr) minmax(250px,30%);
-  align-items:end; gap:24px; margin-top:clamp(56px,17vh,205px); padding-bottom:28px;
+  align-items:end; gap:24px; padding-bottom:28px;
 }
 .birthday-content::after {
   content:""; position:absolute; inset:auto 0 0; height:1px;
-  background:linear-gradient(90deg,#8298d36b,#afc6ff22,#8298d36b);
+  background:linear-gradient(90deg,#b967745f,#b967741d,#b967745f);
 }
 .birthday-content h1 {
   margin:0; font-size:clamp(46px,6.4vw,106px); line-height:.91; font-weight:300;
-  letter-spacing:-.065em; text-shadow:0 0 28px #060822;
+  letter-spacing:-.065em; text-shadow:0 0 28px #080808;
 }
 #birthday-form { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
-#birthday-form label { display:grid; gap:7px; color:#d1d9f8; font-size:12px; font-weight:500; }
+#birthday-form label { display:grid; gap:7px; color:var(--muted); font-size:12px; font-weight:500; }
 #birthday-form :is(input,button) {
   width:100%; min-width:0; height:47px; padding:0 13px; border-radius:7px;
-  color:#f3f5ff; font:15px "Helvetica Neue",Arial,sans-serif;
+  color:var(--ink); font:15px "Helvetica Neue",Arial,sans-serif;
 }
 #birthday-form input {
-  appearance:textfield; border:1px solid #7786be80; background:#080e2ee0;
+  appearance:textfield; border:1px solid #b967747d; background:#121110eb;
   font-variant-numeric:tabular-nums;
 }
 #birthday-form input::-webkit-inner-spin-button { appearance:none; }
-#birthday-form input::placeholder { color:#a0accd; }
+#birthday-form input::placeholder { color:var(--muted); }
 #birthday-form button {
   grid-column:1/-1; display:flex; align-items:center; justify-content:space-between;
-  margin-top:3px; border:1px solid #4b63fd; background:#2444f3; cursor:pointer; font-weight:600;
+  margin-top:3px; border:1px solid #975260; background:#672d3a; cursor:pointer; font-weight:600;
 }
-#birthday-form button:hover { background:#3c56ff; }
-#birthday-form :is(input,button):focus-visible { outline:2px solid #a4d6ff; outline-offset:3px; }
-.birthday-wordmark {
-  position:absolute; z-index:-1; pointer-events:none; inset:auto 0 -.16em; text-align:center;
-  font-size:34vw; font-weight:200; line-height:.82; letter-spacing:-.078em;
-  background:linear-gradient(170deg,#edf2ff 0,#8794b6 29%,#182346 65%,#e2e9ff 100%);
-  color:#8493ba; background-clip:text; -webkit-text-fill-color:transparent;
-}
+#birthday-form button:hover { background:#80394a; }
+#birthday-form :is(input,button):focus-visible { outline:2px solid var(--accent); outline-offset:3px; }
 @media(max-width:650px) {
   .birthday-page { min-height:max(100svh,550px); }
-  .birthday-masthead { min-height:58px; }
-  .birthday-content { grid-template-columns:1fr; gap:clamp(27px,7vh,60px); margin-top:clamp(42px,12vh,100px); padding-bottom:20px; }
+  .birthday-content { grid-template-columns:1fr; gap:clamp(27px,7vh,60px); padding-bottom:20px; }
   .birthday-content h1 { font-size:clamp(49px,13vw,77px); }
   #birthday-form { width:min(100%,360px); }
-  .birthday-wordmark { font-size:36vw; inset-block-end:-.1em; }
 }
