@@ -9,24 +9,20 @@
   <link rel="stylesheet" href="site.css">
   <title>Birthday | Ahmed Khalil Daoudi</title>
   <script src="birthday.js" defer></script>
+  <script src="birthday-orb.js" defer></script>
 </head>
-<body>
-  <header class="birthday-masthead shell">
-    <span class="brand"><span class="brand-mark" aria-hidden="true">AK</span> Ahmed Khalil Daoudi</span>
-  </header>
-  <main class="birthday-page shell">
-    <img class="birthday-portrait" src="assets/khalil-cutout-v3.webp" width="1081" height="1455" alt="" fetchpriority="high">
-    <section class="birthday-question" aria-labelledby="birthday-title">
-      <h1 id="birthday-title">
-        <span class="birthday-opening">When is my</span>
-        <span class="birthday-word">birthday?</span>
-      </h1>
+<body class="birthday-entry">
+  <main class="birthday-page" aria-labelledby="birthday-title">
+    <header class="birthday-masthead"><span aria-hidden="true">✳</span> Ahmed Khalil Daoudi</header>
+    <canvas class="birthday-orb" aria-hidden="true"></canvas>
+    <h1 id="birthday-title">When is my<br>birthday?</h1>
+    <div class="birthday-answer">
       <form id="birthday-form">
         <label>Month <input name="month" type="number" inputmode="numeric" min="1" max="12" step="1" placeholder="MM" required></label>
         <label>Day <input name="day" type="number" inputmode="numeric" min="1" max="31" step="1" placeholder="DD" required></label>
         <button type="submit">Enter <span aria-hidden="true">↗</span></button>
       </form>
-    </section>
+    </div>
   </main>
   <audio id="birthday-audio" src="assets/birthday-soundtrack.m4a" preload="none"></audio>
 </body>
