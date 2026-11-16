@@ -3,24 +3,27 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0b0a10">
+  <meta name="theme-color" content="#03051b">
   <meta name="robots" content="noindex">
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="site.css">
   <title>Birthday | Ahmed Khalil Daoudi</title>
   <script src="birthday.js" defer></script>
+  <script src="birthday-light.js" defer></script>
 </head>
 <body class="birthday-entry">
-  <header class="birthday-masthead"><span class="brand-mark" aria-hidden="true">AK</span> Ahmed Khalil Daoudi</header>
   <main class="birthday-page" aria-labelledby="birthday-title">
-    <section class="birthday-answer">
-      <h1 id="birthday-title">When is my birthday?</h1>
+    <canvas class="birthday-light" aria-hidden="true"></canvas>
+    <header class="birthday-masthead"><span aria-hidden="true"></span> Ahmed Khalil Daoudi</header>
+    <section class="birthday-content" aria-labelledby="birthday-title">
+      <h1 id="birthday-title">When is my<br>birthday?</h1>
       <form id="birthday-form">
         <label>Month <input name="month" type="number" inputmode="numeric" min="1" max="12" step="1" placeholder="MM" required></label>
         <label>Day <input name="day" type="number" inputmode="numeric" min="1" max="31" step="1" placeholder="DD" required></label>
-        <button type="submit">Enter <span aria-hidden="true">↗</span></button>
+        <button type="submit">Enter site <span aria-hidden="true">↗</span></button>
       </form>
     </section>
+    <div class="birthday-wordmark" aria-hidden="true">Daoudi</div>
   </main>
   <audio id="birthday-audio" src="assets/birthday-soundtrack.m4a" preload="none" loop></audio>
 </body>
