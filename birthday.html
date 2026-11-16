@@ -9,11 +9,13 @@
   <link rel="stylesheet" href="site.css">
   <title>When is my birthday?</title>
   <script src="birthday.js" defer></script>
-  <script src="birthday-light.js" defer></script>
+  <script src="birthday-ascii.js" defer></script>
 </head>
 <body class="birthday-entry">
   <main class="birthday-page" aria-labelledby="birthday-title">
-    <canvas class="birthday-light" aria-hidden="true"></canvas>
+    <div class="birthday-art" aria-hidden="true">
+      <canvas class="birthday-ascii"></canvas>
+    </div>
     <section class="birthday-content" aria-labelledby="birthday-title">
       <h1 id="birthday-title">When is my<br>birthday?</h1>
       <form id="birthday-form">
